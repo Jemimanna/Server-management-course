@@ -32,61 +32,77 @@
 ## Omat tehtävät
 ### a) Debian 13 asennus
 Käytin tehtävässä apuna Karvisen ohjetta Install Debian on Virtualbox (2021). Sieltä painoin linkkiä ja aloitin tehtävän lataamalla debian-live-13.7.0-amd64-xfce.iso tiedoston koneelleni. Minulla oli VirtualBox jo ladattuna, joten valitsin sieltä expert install, jotta pystyin laittamaan oikeat konfiguraatiot virtuaalikoneelleni. Painon VirtualBoxissa New ja sieltä sain luotua uuden virtuaalikoneen. Aluksi asetin koneelle nimen sekä ISO Image kohtaan debian-live-13 ISO tiedoston. Käyttöjärjestelmäksi valitsin Linuxin ja OS versioon Debian(64-bit). Proceed with Unattended Installion täppää en klikannut, jotta voin itse konfiguroida haluamani asetukset.
+
 <img width="471" height="182" alt="image" src="https://github.com/user-attachments/assets/5478b290-ea45-406c-9d53-bc4cc76a2e3e" />
 
 Base memory kohtaan asetin 4090 MB, CPU:n määrän kahteen ja täppä use EFI kohtaan.
+
 <img width="466" height="114" alt="image" src="https://github.com/user-attachments/assets/beba72ee-42a7-4a06-95af-21601de75aa8" />
 
 Asetin Virtual Hard Disk kooksi 60 GB ja painoin Finish.
+
 <img width="482" height="296" alt="image" src="https://github.com/user-attachments/assets/0fe10713-70d9-4c37-bcd0-22fc3747a9ac" />
 
-Nyt kun olin saanut asetukset laitettua, käynnistin virtuaalikoneen Start with GUI painikkeella. Sain seuraavan kuvan ja valitsin ylimmän vaihtoehdon Enterillä eli Live system (amd64)
+Nyt kun olin saanut asetukset laitettua, käynnistin virtuaalikoneen Start with GUI painikkeella. Sain seuraavan kuvan ja valitsin ylimmän vaihtoehdon Enterillä eli Live system (amd64).
+
 <img width="399" height="361" alt="image" src="https://github.com/user-attachments/assets/d50203ab-1e52-449a-88b2-fab7e2a9b0fa" />
 
 Nyt olin päässyt koneeseen, testasin toimintaa painamalla Applications ja sieltä Web Browser.
+
 <img width="640" height="461" alt="image" src="https://github.com/user-attachments/assets/b50da333-83dc-4c2d-9d4b-d9860eb909d4" />
 
 Testasin toimintaa hakemalla "Tero Karvinen" ja sieltä löysin sivuston.
+
 <img width="640" height="467" alt="image" src="https://github.com/user-attachments/assets/daa62a4d-e87f-4489-b651-fa7bff7a390c" />
 
 Seuraavaksi oli asennus, klikkasin Install Debian kuvaketta.
+
 <img width="52" height="55" alt="image" src="https://github.com/user-attachments/assets/fc73b90b-38b4-43b7-8d48-d3002188255e" />
 
 Siitä aukesi Calamares installer ja asetin siellä seuraavat asetukset:
 * Language: American English
 * Location: Region: Europe, Zone: Helsinki
-  <img width="410" height="223" alt="image" src="https://github.com/user-attachments/assets/763f4864-e7c0-465a-a67f-397200bc4443" />
+* <img width="410" height="223" alt="image" src="https://github.com/user-attachments/assets/763f4864-e7c0-465a-a67f-397200bc4443" />
 * Keyboard: Finnish (testasin toimintaa vasemmassa alanurkassa)
-  <img width="416" height="272" alt="image" src="https://github.com/user-attachments/assets/220099f6-422f-4b7b-9397-3b7a4ab2231b" />
+* <img width="416" height="272" alt="image" src="https://github.com/user-attachments/assets/220099f6-422f-4b7b-9397-3b7a4ab2231b" />
 * Partitions: Erase disk: valitaan, Encrypt system: ei valita
 * Users: (Asetin salasanan kuvan jälkeen)
-  <img width="430" height="298" alt="image" src="https://github.com/user-attachments/assets/8418c149-3dd0-4090-a556-6d852666868a" />
+* <img width="430" height="298" alt="image" src="https://github.com/user-attachments/assets/8418c149-3dd0-4090-a556-6d852666868a" />
 
 Asetukset olivat valmiit ja klikkasin install.
+
 <img width="431" height="327" alt="image" src="https://github.com/user-attachments/assets/50342fe3-b555-4915-aeda-f11820543dcc" />
 
 Lataus alkoi.
+
 <img width="422" height="302" alt="image" src="https://github.com/user-attachments/assets/566efc4d-96ba-46bc-add4-546dadb6c48b" />
 
 Pääsin kirjautumaan aiemmin asettamillani käyttäjätunnuksilla.
+
 <img width="636" height="462" alt="image" src="https://github.com/user-attachments/assets/e459a12b-e3b3-459e-b312-d43aefd7bb6a" />
 
 Näin sain Debianin asennettua.
+
 <img width="632" height="456" alt="image" src="https://github.com/user-attachments/assets/053f527f-b274-43e6-96fb-1ec491050d90" />
 
 Päivitin listaukset komennolla sudo apt-get update ja sudon takia piti antaa myös salasanani.
+
 <img width="531" height="247" alt="image" src="https://github.com/user-attachments/assets/fd3b74b8-5cf1-4525-81cc-d631161e373b" />
 
 Seuraavaksi komento sudo apt-get -y dist-upgrade, joka päivitti kaiken.
+
 <img width="403" height="367" alt="image" src="https://github.com/user-attachments/assets/4868f903-3b1b-402a-8164-b87f3ab83520" />
 
 Palomuurin asennus komennolla sudo apt-get -y install ufw ja laitoin sen päälle komennolla sudo ufw enable.
+
 <img width="250" height="33" alt="image" src="https://github.com/user-attachments/assets/d14fc12c-fd1e-49f8-a7db-af338438cd71" />
 
 Tämän jälkeen reboottasin systeemin painamalla Applications, Log out ja Restart.
+
 <img width="638" height="404" alt="image" src="https://github.com/user-attachments/assets/31b60edf-fbed-4f97-b788-9132b8cb05bc" />
 
 Tein vielä VirtualBox Guest Additions asennuksen, jotta käyttäminen helpottuu ja ruutu skaalautuu paremmin. Aluksi klikkasin Devices ja sieltä Insert Guest Additions CD Image.
+
 <img width="635" height="462" alt="image" src="https://github.com/user-attachments/assets/b85161b1-9b1b-4e70-b776-312aa138dce9" />
 
 Sain seuraavanlaisen virheilmoituksen ja en tiennyt miten se korjataan, joten pyysin apua ChatGPT -tekoälyltä. Se käytti pohjana tiedoilleen Shivam Malanin artikkelia Fix VirtualBox "Unable to insert the virtual optical disk" (VERR_PDM_MEDIA_LOCKED) (2026).
@@ -96,14 +112,49 @@ Sain seuraavanlaisen virheilmoituksen ja en tiennyt miten se korjataan, joten py
 Sain ohjeeksi ensin sulkea koko virtuaalikoneen ja sitten mennä VirtualBoxissa asetuksiin ja sieltä Storage->etsiä CD/DVD asema ja klikata levy kuvaketta->remove disk from virtual drive. Sitten käynnistin Debianin uudelleen.
 
 Näin sain korjattua ongelman ja siirryin eteenpäin. Klikkasin uudelleen Insert Guest Additions CD Image ja nyt se näkyi kun avasin File managerin.
+
 <img width="326" height="262" alt="image" src="https://github.com/user-attachments/assets/4da01c07-c6b3-43e2-a65e-ba512f8847a5" />
 
 Sitten menin Applications ja terminaaliin, siellä laitoin komennot:
+
 <img width="433" height="218" alt="image" src="https://github.com/user-attachments/assets/308d2f18-b921-48f2-a05a-62876e7b1eab" />
 
-Tämän jälkeen suoritin jälleen rebootin Applications->Log out->Restart. Kirjauduin sisään ja nyt skaalautuvuus toimi oikein. Nyt 
+Tämän jälkeen suoritin jälleen rebootin Applications->Log out->Restart. Kirjauduin sisään ja nyt skaalautuvuus toimi oikein. 
+
 <img width="959" height="502" alt="image" src="https://github.com/user-attachments/assets/94882537-7023-4454-a146-f9180bfeab8a" />
 
+### b) UpCloud virtuaalipalvelin
+Sain UpCloudin asennuksen tehtyä tunnilla, joten en kykene ottamaan screenshotteja sen tekemisestä. Käytin apuna muistin virkistämiseksi eri vaiheista Niemen H4 tehtäviä (2025). Vaiheina oli suunnilleen, että tein UpCloudiin käyttäjän ja valitsin serverin paikaksi Suomen. Sitten valitsin halvimman mahdollisen suunnitelman: 1 core, 1GB Memory, 10GB Storage ja hinta oli 3€/kk. Lisäosia en ottanut ja seuraavaksi valitsin operating system kohtaan Debian GNU/Linux 13 (Trixie). Login Method kohtaan täytyi luoda SSH avainparit, jotka tein Windows Powershellissä komennolla ssh-keygen.
+
+<img width="462" height="147" alt="image" src="https://github.com/user-attachments/assets/b98b66ac-5f04-4e18-81d2-1ecc2c60c38d" />
+
+Lisäsin .pub päätteisen eli julkisen avaimen UpCloudin login method kohtaan. Näin oma UpCloud serverini oli luotu ja piti vain asettaa parit asetukset sitä varten. Tämän olin tehnyt Powershellissä tunnilla.
+
+<img width="209" height="71" alt="image" src="https://github.com/user-attachments/assets/092f3fb6-9425-4b15-bc15-8eaf6af900c5" />
+
+
+### c) Virtuaalipalvelimen alkutoimet
+Käynnistin serverin UpCloudin kautta ja otin yhteyden ssh:n avulla komennolla root@serverin-ip. Nyt olin sisällä root käyttäjänä. Lisäsin käyttäjän itselleni komennolla adduser jemima. Sitten annoin sudo oikeudet komennolla sudo adduser jemima sudo. Laitoin seuraavat komennot, mkdir lisäsi uuden hakemiston ssh avaimille kotihakemistooni, cp:n avulla kopioin rootista avainten tiedot uuteen hakemistoon ja chown merkkasi omistajuuden. Tein chown myös authorized_keys kansiolle (ei näy kuvassa).
+
+<img width="670" height="167" alt="image" src="https://github.com/user-attachments/assets/a03baf0f-60f8-43e8-8d3f-29d5874e8288" />
+
+Tämän jälkeen pystyin ottamaan yhteyden jemima käyttäjällä jemima@serverin_ip.
+
+<img width="244" height="22" alt="image" src="https://github.com/user-attachments/assets/1bd0b876-7790-43d2-b72d-2aa2c3d26f14" />
+
+Olin laittanut komennoilla chmod 700 /home/jemima/.ssh omistajalle kaikki oikeudet, muille ei mitään ja chmod 600 /home/jemima/.ssh/authorized_keys omistajalle luku- ja kirjoitusoikeudet.
+
+<img width="434" height="215" alt="image" src="https://github.com/user-attachments/assets/77ea4bd4-49a5-474d-974b-9087db9bfecb" />
+
+Palomuurin asennuksen tein komennoilla apt-get update ja sen jälkeen sudo apt-get install ufw. Sallin 22 portin liikenteen komennolla sudo ufw allow 22/tcp ja aktivoin palomuurin komennolla sudo ufw enable. Katsoin vielä statuksen ja asiat näyttivät oikeilta.
+
+<img width="388" height="128" alt="image" src="https://github.com/user-attachments/assets/0729b638-057d-48cd-b91b-a088aa33996d" />
+
+Seuraavaksi omalla käyttäjälläni lukitsin root käyttäjän komennolla sudo usermod --lock root. Sitten poistin mahdollisuuden kirjautua root-käyttäjänä komennolla sudoedit /etc/ssh/sshd_config ja sieltä menemällä PermitRootLogin kohtaan vaihtamaan sen "no". Tallensin editorin muutokset ja ajoin vielä komennon sudo service ssh restart eli käynnistin palvelimeni uudelleen.
+
+<img width="142" height="17" alt="image" src="https://github.com/user-attachments/assets/351588e3-f835-4ad0-9307-efadaf673e98" />
+
+### d) Apache lataus
 
 
 ## Lähteet
