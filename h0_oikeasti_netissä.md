@@ -155,7 +155,9 @@ Seuraavaksi omalla käyttäjälläni lukitsin root käyttäjän komennolla sudo 
 <img width="142" height="17" alt="image" src="https://github.com/user-attachments/assets/351588e3-f835-4ad0-9307-efadaf673e98" />
 
 ### d) Apache lataus
+Kirjauduin käyttäjälleni ja ajoin komennon sudo apt-get install apache2. Sitten menin testaamaan sen toimintaa Chromeen, kirjoitin http://oma-ip-osoite ja se vei Apache2 sivuille. Sallin 80 portin kulun komennolla sudo ufw allow 80/tcp ja sudo ufw enable, jotta sivu toimisi selaimessa kaikilla. Ajoin komennot sudo a2enmod userdir ja sudo systemctl restart apache2. Sen jälkeen loin hakemiston komennolla mkdir public_html ja loin sen sisään index.html tiedoston, johon lisäsin tekstiä echo komennolla. Sain sivuston toimimaan nyt omalla käyttäjälläni.
 
+<img width="959" height="498" alt="image" src="https://github.com/user-attachments/assets/522852b4-bd56-43ee-9db9-b4bfa72525dd" />
 
 ## Lähteet
 * Karvinen, T. 2021. Install Debian on Virtualbox. Luettavissa: https://terokarvinen.com/2021/install-debian-on-virtualbox/. Luettu: 27.10.2026.
