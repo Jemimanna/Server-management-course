@@ -31,7 +31,41 @@
 
 ## Omat tehtävät
 ### a) Debian 13 asennus
-Käytin tehtävässä apuna Karvisen ohjetta Install Debian on Virtualbox (2021). Sieltä painoin linkkiä ja aloitin tehtävän lataamalla debian-live-13.7.0-amd64-xfce.iso tiedoston koneelleni. 
+Käytin tehtävässä apuna Karvisen ohjetta Install Debian on Virtualbox (2021). Sieltä painoin linkkiä ja aloitin tehtävän lataamalla debian-live-13.7.0-amd64-xfce.iso tiedoston koneelleni. Minulla oli VirtualBox jo ladattuna, joten valitsin sieltä expert install, jotta pystyin laittamaan oikeat konfiguraatiot virtuaalikoneelleni. Painon VirtualBoxissa New ja sieltä sain luotua uuden virtuaalikoneen. Aluksi asetin koneelle nimen sekä ISO Image kohtaan debian-live-13 ISO tiedoston. Käyttöjärjestelmäksi valitsin Linuxin ja OS versioon Debian(64-bit). Proceed with Unattended Installion täppää en klikannut, jotta voin itse konfiguroida haluamani asetukset.
+<img width="471" height="182" alt="image" src="https://github.com/user-attachments/assets/5478b290-ea45-406c-9d53-bc4cc76a2e3e" />
+
+Base memory kohtaan asetin 4090 MB, CPU:n määrän kahteen ja täppä use EFI kohtaan.
+<img width="466" height="114" alt="image" src="https://github.com/user-attachments/assets/beba72ee-42a7-4a06-95af-21601de75aa8" />
+
+Asetin Virtual Hard Disk kooksi 60 GB ja painoin Finish.
+<img width="482" height="296" alt="image" src="https://github.com/user-attachments/assets/0fe10713-70d9-4c37-bcd0-22fc3747a9ac" />
+
+Nyt kun olin saanut asetukset laitettua, käynnistin virtuaalikoneen Start with GUI painikkeella. Sain seuraavan kuvan ja valitsin ylimmän vaihtoehdon Enterillä eli Live system (amd64)
+<img width="399" height="361" alt="image" src="https://github.com/user-attachments/assets/d50203ab-1e52-449a-88b2-fab7e2a9b0fa" />
+
+Nyt olin päässyt koneeseen, testasin toimintaa painamalla Applications ja sieltä Web Browser.
+<img width="640" height="461" alt="image" src="https://github.com/user-attachments/assets/b50da333-83dc-4c2d-9d4b-d9860eb909d4" />
+
+Testasin toimintaa hakemalla "Tero Karvinen" ja sieltä löysin sivuston.
+<img width="640" height="467" alt="image" src="https://github.com/user-attachments/assets/daa62a4d-e87f-4489-b651-fa7bff7a390c" />
+
+Seuraavaksi oli asennus, klikkasin Install Debian kuvaketta.
+<img width="52" height="55" alt="image" src="https://github.com/user-attachments/assets/fc73b90b-38b4-43b7-8d48-d3002188255e" />
+
+Siitä aukesi Calamares installer ja asetin siellä seuraavat asetukset:
+* Language: American English
+* Location: Region: Europe, Zone: Helsinki<img width="410" height="223" alt="image" src="https://github.com/user-attachments/assets/763f4864-e7c0-465a-a67f-397200bc4443" />
+* Keyboard: Finnish (testasin toimintaa vasemmassa alanurkassa)<img width="416" height="272" alt="image" src="https://github.com/user-attachments/assets/220099f6-422f-4b7b-9397-3b7a4ab2231b" />
+* Partitions: Erase disk: valitaan, Encrypt system: ei valita
+* Users: (Asetin salasanan kuvan jälkeen) <img width="430" height="298" alt="image" src="https://github.com/user-attachments/assets/8418c149-3dd0-4090-a556-6d852666868a" />
+
+Asetukset olivat valmiit ja klikkasin install.<img width="431" height="327" alt="image" src="https://github.com/user-attachments/assets/50342fe3-b555-4915-aeda-f11820543dcc" />
+
+Lataus alkoi.<img width="422" height="302" alt="image" src="https://github.com/user-attachments/assets/566efc4d-96ba-46bc-add4-546dadb6c48b" />
+
+
+
+
 
 
 ## Lähteet
