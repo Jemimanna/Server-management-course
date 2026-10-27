@@ -29,6 +29,12 @@
 * Nettisivuja, joista nimiä voi hankkia on monia erilaisia.
 * Mikäli omalla sivuston nimellä ei ole väliä, kannattaa vaihdella nimeä, kunnes löytää mahdollisimman halvan.
 
+## Omat tehtävät
+### a) Debian 13 asennus
+Käytin tehtävässä apuna Karvisen ohjetta Install Debian on Virtualbox (2021). Sieltä painoin linkkiä ja aloitin tehtävän lataamalla debian-live-13.7.0-amd64-xfce.iso tiedoston koneelleni. 
+
+
 ## Lähteet
+* Karvinen, T. 2021. Install Debian on Virtualbox. Luettavissa: https://terokarvinen.com/2021/install-debian-on-virtualbox/. Luettu: 27.10.2026.
 * Niemi. 2025. H4 Tehtävät. Luettavissa: https://github.com/AONCODES/linux-course/blob/main/h4.md. Luettu: 26.10.2026.
 * Partanen, A. 2025. Harjoitus 5: Nimekäs. Luettavissa: https://partanennn.github.io/linux-servers/practices/fifth-week.html. Luettu: 26.10.2026.
