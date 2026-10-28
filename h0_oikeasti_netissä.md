@@ -124,7 +124,7 @@ Tämän jälkeen suoritin jälleen rebootin Applications->Log out->Restart. Kirj
 <img width="959" height="502" alt="image" src="https://github.com/user-attachments/assets/94882537-7023-4454-a146-f9180bfeab8a" />
 
 ### b) UpCloud virtuaalipalvelin
-Sain UpCloudin asennuksen tehtyä tunnilla, joten en kykene ottamaan screenshotteja sen tekemisestä. Käytin apuna muistin virkistämiseksi eri vaiheista Niemen H4 tehtäviä (2025). Vaiheina oli suunnilleen, että tein UpCloudiin käyttäjän ja valitsin serverin paikaksi Suomen. Sitten valitsin halvimman mahdollisen suunnitelman: 1 core, 1GB Memory, 10GB Storage ja hinta oli 3€/kk. Lisäosia en ottanut ja seuraavaksi valitsin operating system kohtaan Debian GNU/Linux 13 (Trixie). Login Method kohtaan täytyi luoda SSH avainparit, jotka tein Windows Powershellissä komennolla ssh-keygen.
+Sain UpCloudin asennuksen tehtyä tunnilla, joten en kykene ottamaan screenshotteja sen tekemisestä. Käytin apuna muistin virkistämiseksi eri vaiheita Niemen H4 tehtäviä (2025) tekstistä. Vaiheina oli suunnilleen, että tein UpCloudiin käyttäjän ja valitsin serverin paikaksi Suomen. Sitten valitsin halvimman mahdollisen suunnitelman: 1 core, 1GB Memory, 10GB Storage ja hinta oli 3€/kk. Lisäosia en ottanut ja seuraavaksi valitsin operating system kohtaan Debian GNU/Linux 13 (Trixie). Login Method kohtaan täytyi luoda SSH avainparit, jotka tein Windows Powershellissä komennolla ssh-keygen.
 
 <img width="462" height="147" alt="image" src="https://github.com/user-attachments/assets/b98b66ac-5f04-4e18-81d2-1ecc2c60c38d" />
 
@@ -134,7 +134,7 @@ Lisäsin .pub päätteisen eli julkisen avaimen UpCloudin login method kohtaan. 
 
 
 ### c) Virtuaalipalvelimen alkutoimet
-Käynnistin serverin UpCloudin kautta ja otin yhteyden ssh:n avulla komennolla root@serverin-ip. Nyt olin sisällä root käyttäjänä. Lisäsin käyttäjän itselleni komennolla adduser jemima. Sitten annoin sudo oikeudet komennolla sudo adduser jemima sudo. Laitoin seuraavat komennot, mkdir lisäsi uuden hakemiston ssh avaimille kotihakemistooni, cp:n avulla kopioin rootista avainten tiedot uuteen hakemistoon ja chown merkkasi omistajuuden. Tein chown myös authorized_keys kansiolle (ei näy kuvassa).
+Käynnistin serverin UpCloudin kautta ja otin yhteyden ssh:n avulla komennolla root@serverin-ip. Nyt olin sisällä root käyttäjänä. Lisäsin käyttäjän itselleni komennolla adduser jemima. Sitten annoin sudo oikeudet komennolla adduser jemima sudo. Laitoin seuraavat komennot, mkdir lisäsi uuden hakemiston ssh avaimille kotihakemistooni, cp:n avulla kopioin rootista avainten tiedot uuteen hakemistoon ja chown merkkasi omistajuuden. Tein chown myös authorized_keys kansiolle (ei näy kuvassa).
 
 <img width="670" height="167" alt="image" src="https://github.com/user-attachments/assets/a03baf0f-60f8-43e8-8d3f-29d5874e8288" />
 
@@ -160,6 +160,8 @@ Kirjauduin käyttäjälleni ja ajoin komennon sudo apt-get install apache2. Sitt
 <img width="959" height="498" alt="image" src="https://github.com/user-attachments/assets/522852b4-bd56-43ee-9db9-b4bfa72525dd" />
 
 ## Lähteet
+* Karvinen, T. 2008. Install Apache Web Server on Ubuntu. Luettavissa: https://terokarvinen.com/2008/05/02/install-apache-web-server-on-ubuntu-4/index.html. Luettu: 27.10.2026.
 * Karvinen, T. 2021. Install Debian on Virtualbox. Luettavissa: https://terokarvinen.com/2021/install-debian-on-virtualbox/. Luettu: 27.10.2026.
+* Malani, S. 2026. Fix VirtualBox “Unable to insert the virtual optical disk” (VERR_PDM_MEDIA_LOCKED). All Things How. Luettavissa: https://allthings.how/fix-virtualbox-unable-to-insert-the-virtual-optical-disk-verr_pdm_media_locked/. Luettu 27.10.2026.
 * Niemi. 2025. H4 Tehtävät. Luettavissa: https://github.com/AONCODES/linux-course/blob/main/h4.md. Luettu: 26.10.2026.
 * Partanen, A. 2025. Harjoitus 5: Nimekäs. Luettavissa: https://partanennn.github.io/linux-servers/practices/fifth-week.html. Luettu: 26.10.2026.
