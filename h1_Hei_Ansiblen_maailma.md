@@ -135,5 +135,32 @@ Testasin sen toimintaa komennolla `ansible all -a "uptime"`, joka eroaa aiemmin 
 
 <img width="312" height="50" alt="image" src="https://github.com/user-attachments/assets/c73bb871-51e4-485c-8e9f-7a9eb4932cf1" />
 
-### Site.yml - roolit
-Seuraavaksi piti tehdä rooleja 
+### Site.yml
+Seuraavaksi piti tehdä rooli "hello". Tein uuden tiedoston komennolla `micro site.yml` ja sinne kirjoitin seuraavat tiedot:
+
+<img width="205" height="65" alt="image" src="https://github.com/user-attachments/assets/cff64b29-924e-487c-a5ae-9fe4cac5e4c0" />
+
+Ajoin komennon `ansible-playbook site.yml`, jolla suoritetaan playbook tiedostoja. Komento löysi tiedoston site.yml, mutta antaa virheilmoituksen, koska roolia "hello" ei ole vielä luotu. 
+
+<img width="467" height="109" alt="image" src="https://github.com/user-attachments/assets/e64a3ca7-a142-4a0d-92af-0c518cafc36f" />
+
+### Hello roolin luonti
+Aluksi loin uuden hakemiston komennolla `mkdir -p roles/hello/tasks/`. `mkdir` luo uuden hakemiston, `-p` on sen takia komennossa, että se luo tarvittaessa kaikki ylemmät hakemistot ja `roles/hello/tasks` on hakemiston polku. Tämä luo polun roles -> hello -> tasks.
+
+<img width="269" height="26" alt="image" src="https://github.com/user-attachments/assets/0e94e536-52db-49c8-9e4c-d902c6314a85" />
+
+Seuraavaksi loin vielä main.yml kohdan roles/hello/tasks polkuun, jossa koodi suoritetaan. Tein tämän komennolla `micro roles/hello/tasks/main.yml` ja lisäämällä sinne seuraavat tiedot.
+* - copy: = kopioi
+* dest: /tmp/hello-ansible = destination eli kohde
+* content: "testaus\n" = sisältö
+
+<img width="290" height="65" alt="image" src="https://github.com/user-attachments/assets/3b1c501b-3844-4218-87c4-6903cd9e43ee" />
+
+Ajoin komennon `ansible-playbook site.yml` uudestaan, sillä nyt se kutsuu luomaani hakemistoa roles/hello ja siellä tasks/main.yml suoritetaan automaattisesti. Vastaukseksi sain, että yhtä kohtaa oli muutettu (changed).
+
+<img width="574" height="137" alt="image" src="https://github.com/user-attachments/assets/123e51c4-a43d-4865-a340-4708e4357325" />
+
+Testasin vielä toisella komennolla `ssh localhost 'cat /tmp/hello-ansible'` tuleeko tiedostoon laittamani teksti vielä esiin. Se antoi vastaukseksi "testaus" eli komento toimi oikein.
+
+<img width="319" height="32" alt="image" src="https://github.com/user-attachments/assets/95b6c6c4-516e-4f46-9e8a-d5fb907f897d" />
+
