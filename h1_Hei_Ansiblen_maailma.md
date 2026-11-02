@@ -89,17 +89,18 @@ Ensiksi oli Ansiblen lataus. Tein sen ajamalla ensin `sudo apt-get update` komen
 
 <img width="375" height="92" alt="image" src="https://github.com/user-attachments/assets/63ab19cd-1a79-4e0b-854f-9af154396860" />
 
-Tämän jälkeen latasin Ansiblen komennolla `sudo apt-get install ansible micro bash-completion tree`. 
-    * micro = tekstieditori
-    * bash-completion = tab täydentää kirjoitettavan sanan
-    * tree = näyttää puumaisen rakennelman tiedostoista ja kansioista
-    * `micro bash-completion tree` ovat "extra" asioita, jotka helpottavat ansiblen käyttöä.
+Tämän jälkeen latasin Ansiblen komennolla `sudo apt-get install ansible micro bash-completion tree`.
+* micro = tekstieditori
+* bash-completion = tab täydentää kirjoitettavan sanan
+* tree = näyttää puumaisen rakennelman tiedostoista ja kansioista
+* `micro bash-completion tree` ovat "extra" asioita, jotka helpottavat ansiblen käyttöä.
+  
 Latauksessa kesti hetki.
 
 <img width="464" height="414" alt="image" src="https://github.com/user-attachments/assets/d963d7ce-9d20-4f5f-bf9f-3c0f1c2e8df6" />
 
 ### Testataan SSH Ansiblen avulla
-Tein hakemiston kaikille Ansible konfiguraatioille menemällä ensin kotihakemistooni komennolla `cd` ja sen jälkeen ansible/ hakemiston luominen komennolla `cd ansible/`. Nyt kun hakemisto oli luotu menin vielä sinne komennolla `cd ansible/`.
+Tein hakemiston kaikille Ansible konfiguraatioille menemällä ensin kotihakemistooni komennolla `cd` ja sen jälkeen ansible/ hakemiston luominen komennolla `mkdir ansible/`. Nyt kun hakemisto oli luotu menin vielä sinne komennolla `cd ansible/`.
 
 <img width="170" height="45" alt="image" src="https://github.com/user-attachments/assets/d3094dd2-04f2-4afa-b468-1e90d644ff58" />
 
@@ -131,7 +132,7 @@ Nopeuttaakseni ansiblen käyttöä tein uuden tiedoston ansible.cfg jälleen kom
 
 <img width="224" height="55" alt="image" src="https://github.com/user-attachments/assets/8cd52bfd-b7aa-4802-b108-19fc6c8dda6c" />
 
-Testasin sen toimintaa komennolla `ansible all -a "uptime"`, joka eroaa aiemmin laittamastani komennosta, sillä -i -hosts.ini kohtaa ei tarvinnut merkata.
+Testasin sen toimintaa komennolla `ansible all -a "uptime"`, joka eroaa aiemmin laittamastani komennosta, sillä -i hosts.ini kohtaa ei tarvinnut merkata.
 
 <img width="312" height="50" alt="image" src="https://github.com/user-attachments/assets/c73bb871-51e4-485c-8e9f-7a9eb4932cf1" />
 
@@ -150,7 +151,7 @@ Aluksi loin uuden hakemiston komennolla `mkdir -p roles/hello/tasks/`. `mkdir` l
 <img width="269" height="26" alt="image" src="https://github.com/user-attachments/assets/0e94e536-52db-49c8-9e4c-d902c6314a85" />
 
 Seuraavaksi loin vielä main.yml kohdan roles/hello/tasks polkuun, jossa koodi suoritetaan. Tein tämän komennolla `micro roles/hello/tasks/main.yml` ja lisäämällä sinne seuraavat tiedot.
-* - copy: = kopioi
+* copy: = kopioi
 * dest: /tmp/hello-ansible = destination eli kohde
 * content: "testaus\n" = sisältö
 
@@ -160,7 +161,7 @@ Ajoin komennon `ansible-playbook site.yml` uudestaan, sillä nyt se kutsuu luoma
 
 <img width="574" height="137" alt="image" src="https://github.com/user-attachments/assets/123e51c4-a43d-4865-a340-4708e4357325" />
 
-Testasin vielä toisella komennolla `ssh localhost 'cat /tmp/hello-ansible'` tuleeko tiedostoon laittamani teksti vielä esiin. Se antoi vastaukseksi "testaus" eli komento toimi oikein.
+Testasin vielä SSH:n avulla toimintaa komennolla `ssh localhost 'cat /tmp/hello-ansible'` tuleeko tiedostoon laittamani teksti vielä esiin. Se antoi vastaukseksi "testaus" eli komento toimi oikein.
 
 <img width="319" height="32" alt="image" src="https://github.com/user-attachments/assets/95b6c6c4-516e-4f46-9e8a-d5fb907f897d" />
 
@@ -190,5 +191,6 @@ Viimeiseksi vielä ajoin jälleen komennon `ansible-playbook site.yml`, joka nä
 
 
 ## Lähteet
-*
-
+* Elysium. Ask Ubuntu. 27.11.2012. What does "sudo apt-get update" do? Luettavissa: https://askubuntu.com/questions/222348/what-does-sudo-apt-get-update-do. Luettu: 2.11.2026.
+* Karvinen, T. 2026. Hello Ansible. Luettavissa: https://terokarvinen.com/hello-ansible/. Luettu: 2.11.2026.
+* Karvinen, T. 2026. SSH public key - Login without password. Luettavissa: https://terokarvinen.com/ssh-public-key-login-without-password/. Luettu: 2.11.2026.
