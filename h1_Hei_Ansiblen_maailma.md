@@ -49,6 +49,8 @@
 * https://github.com/Jemimanna/Server-management-course/blob/main/h0_oikeasti_netiss%C3%A4.md
 
 ## b) SSH-demoni virtuaalikoneelle
+Tämän tehtävän suoritukseen on käytetty ohjeena Karvisen SSH public key - Login without password (2026) julkaisua.
+
 Ajoin ensin komennon `sudo apt-get update`, joka päivittää pakettiluettelot ja tarkistaa mitkä paketit tarvitsevat päivityksiä.
 
 Tämän jälkeen ajoin komennon `sudo apt-get -y install ssh`, joka latasi SSH:n koneelle ja -y vastasi automaattisesti "yes" kaikkiin kysymyksiin.
@@ -70,3 +72,15 @@ Komennolla `w` näin, että olin kirjautunut kaksi kertaa.
 Näin pääsin siis ottamaan SSH yhteyden localhost koneeseen "jemima" käyttäjänä.
 
 ## c) Pubkey - Automatisoidaan SSH kirjautuminen julkisella avaimella
+Tämän tehtävän suoritukseen on käytetty ohjeena Karvisen SSH public key - Login without password (2026) julkaisua.
+
+Ensiksi loin uuden avainparin komennolla `ssh-keygen` ja kopioin siitä luodun julkisen avaimen tiedot komennolla `ssh-copy-id jemima@localhost`. Tämä kopioi julkisen avaimen tiedot .ssh/authorized_keys kansioon "jemima" käyttäjälle. Tämä tehtiin sen takia, että avaimen kopiointi mahdollistaa automaattisen SSH kirjautumisen.
+
+Koska julkinen avain on kopioitu käyttäjän SSH kansioon, se osaa tunnistaa sitä vastaavan yksityisen avaimella tehdyt kirjautumiset ja täten kirjautuminen on "automaattinen" ilman tarvetta kirjoittaa salasanaa.
+
+Nyt, kun kirjauduin, salasanaa ei kysytty, vaan pääsin suoraan ottamaan SSH-yhteyden.
+
+<img width="484" height="110" alt="image" src="https://github.com/user-attachments/assets/33a249eb-3688-4875-8659-900ed794fd03" />
+
+## d) Hei Maailma! Ansiblella
+
