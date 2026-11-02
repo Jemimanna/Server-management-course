@@ -164,3 +164,31 @@ Testasin vielä toisella komennolla `ssh localhost 'cat /tmp/hello-ansible'` tul
 
 <img width="319" height="32" alt="image" src="https://github.com/user-attachments/assets/95b6c6c4-516e-4f46-9e8a-d5fb907f897d" />
 
+### Ansible - näytä mitä teet
+Tahdoin vielä tehdä `ansible-playbook site.yml` tulostamasta paremman niin, että se näyttää, mitä se tekee. Lisäsin komennolla `micro ansible.cfg` tiedostoon kohdan display_args_to_stdout = true, joka printtaa sen, mitä ansible tekee. 
+
+<img width="218" height="64" alt="image" src="https://github.com/user-attachments/assets/a571ad28-311d-41aa-b96d-7c137231f7d5" />
+
+Nyt kun ajoin komennon `ansible-playbook site.yml` se näytti "hello" kohdassa, mitä hello tekee/sisältää. Vertasin tätä vielä `cat roles/hello/tasks/main.yml` komennon tulosteeseen.
+
+<img width="452" height="152" alt="image" src="https://github.com/user-attachments/assets/e582c3ba-6515-4223-933b-cda3d695e4b1" />
+
+<img width="291" height="53" alt="image" src="https://github.com/user-attachments/assets/8c1935d6-fa98-4a11-b963-73b1aa566660" />
+
+### Lopputulos
+Ajoin komennon `tree -F`, joka näyttää puuhakemiston tiedostoista ja hakemistoista. Tämä hahmottaa, miten kaikki linkittyy toisiinsa.
+
+<img width="170" height="122" alt="image" src="https://github.com/user-attachments/assets/19446bc0-be0f-4f3e-af67-fb4874199443" />
+
+Ajoin komennon `head -1000 ansible.cfg hosts.ini site.yml roles/hello/tasks/main.yml`, joka näytti kaiken, mitä olin laittanut kuhunkin hakemistoon/tiedostoon.
+
+<img width="473" height="215" alt="image" src="https://github.com/user-attachments/assets/75a98140-4937-4c9c-b8a0-78efcabf2702" />
+
+Viimeiseksi vielä ajoin jälleen komennon `ansible-playbook site.yml`, joka näytti, että kaikki toimi oikein.
+
+<img width="572" height="149" alt="image" src="https://github.com/user-attachments/assets/e2c8686c-4697-4301-b7be-2bbb62079b49" />
+
+
+## Lähteet
+*
+
