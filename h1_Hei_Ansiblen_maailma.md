@@ -49,5 +49,24 @@
 * https://github.com/Jemimanna/Server-management-course/blob/main/h0_oikeasti_netiss%C3%A4.md
 
 ## b) SSH-demoni virtuaalikoneelle
+Ajoin ensin komennon `sudo apt-get update`, joka päivittää pakettiluettelot ja tarkistaa mitkä paketit tarvitsevat päivityksiä.
 
+Tämän jälkeen ajoin komennon `sudo apt-get -y install ssh`, joka latasi SSH:n koneelle ja -y vastasi automaattisesti "yes" kaikkiin kysymyksiin.
 
+Sitten ajoin komennon `sudo systemctl enable --now ssh`, joka käynnistää SSH:n aina boottauksen yhteydessä (enable) ja komento --now käynnisti sen myös heti.
+
+Tämän jälkeen testasin yhteydenottoa SSH:lla. Komennolla `ssh jemima@localhost`, otin yhteyden localhost koneeseen.
+
+<img width="472" height="119" alt="image" src="https://github.com/user-attachments/assets/fdf2f462-02f0-4684-b2dc-f7deb778bc86" />
+
+Komennolla `w` näin, että olin kirjautunut kaksi kertaa.
+
+<img width="470" height="59" alt="image" src="https://github.com/user-attachments/assets/b942b35a-2f68-44d2-99bc-0dbbf995daac" />
+
+`exit` komennolla SSH-yhteys voitiin katkaista.
+
+<img width="167" height="46" alt="image" src="https://github.com/user-attachments/assets/bc43de79-7552-4a88-8986-07d4499714f2" />
+
+Näin pääsin siis ottamaan SSH yhteyden localhost koneeseen "jemima" käyttäjänä.
+
+## c) Pubkey - Automatisoidaan SSH kirjautuminen julkisella avaimella
