@@ -45,4 +45,9 @@
 ### Omat huomiot
 * Ansiblen käytto on aika tarkkaa ja esim. roolien merkkaus pitää tehdä tarkasti, jotta se toimii.
 
+## a) Debian 13 lataus
+* https://github.com/Jemimanna/Server-management-course/blob/main/h0_oikeasti_netiss%C3%A4.md
+
+## b) SSH-demoni virtuaalikoneelle
+
 
