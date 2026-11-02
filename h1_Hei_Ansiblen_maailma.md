@@ -25,7 +25,7 @@
     * lisää julkisen avaimen .ssh/authorized_keys kansioon etäkoneelle
   * Nyt kirjautuminen on automaattinen SSH yhteydellä eli ei tarvitse erikseen kirjoittaa salasanaa
 ### Omat huomiot
-* 
+* SSH:n käyttö nopeuttaa huomattavasti serverin hallintaa, varsinkin jos on monta eri käyttäjää.
 ### Karvinen 2026: Hello Ansible
 * Ansible on konfiguraatiohallintatyökalu, joka toimii SSH:n kautta -> kirjoitetaan infrastruktuuri koodina -> käyttäjä kuvailee lopputilan ja ansible tekee muutokset, vain jos niitä tarvitaan.
 * Ansible lataus:
@@ -38,4 +38,11 @@
 * Testaus:
   * Tehtiin kansio ansible tiedostoille ja luotiin hosts.ini listaus käyttäjistä, joita kontrolloidaan -> sinne lisättiin localhost.
   * `ansible all -a 'uptime' -i hosts.ini`
-    * 
+    * komento kertoo kauanko kaikki "hosts" koneet ovat olleet päällä
+* Site.yml laitettiin listoja eri rooleista, joita koneille annettiin.
+* Roolit piti luoda erikseen ja niille tasks/main.yml
+  * main.yml -> sisältää koodin, joka suoritetaan automaattisesti
+### Omat huomiot
+* Ansiblen käytto on aika tarkkaa ja esim. roolien merkkaus pitää tehdä tarkasti, jotta se toimii.
+
+
