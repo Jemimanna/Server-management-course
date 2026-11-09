@@ -67,15 +67,34 @@
         group: foo
         state: link
     ```
-  * `user` hallinnoi käyttäjiä ja niiden attribuutteja.
-    * `name`
-    * `create_home`
-    * `comment`
-    * `groups`
-    * `shell`
-    * `state`
-    * `system`
+* `user` hallinnoi käyttäjiä ja niiden attribuutteja.
+  * `name` nimi käyttäjälle, joka luodaan, poistetaan tai jota muokataan.
+  * `create_home` luo kotihakemiston käyttäjälle, kun käyttäjä luodaan tai jos kotihakemistoa ei ole olemassa.
+  * `comment` asettaa käyttäjälle kuvauksen.
+  * `groups` lista lisäryhmistä, joiden jäsen käyttäjä on myös.
+  * `shell` asettaa käyttäjän komentotulkin.
+  * `state` pitääkö tilin olla olemassa vai ei.
+  * `system` onko käyttäjä järjestelmän käyttöön tarkoitettu vai peruskäyttäjä.
+  * esim.
+    
+    ```yaml
+    - name: Create a user 'johnd' with a home directory
+      ansible.builtin.user:
+        name: johnd
+        create_home: yes
+      ```
+* `authorized_key` lisää tai poistaa SSH valtuutettuja avaimia.
+  * `user` etäpalvelimen käyttäjänimi, jonka authorized_keys tiedostoa muokataan.
+  * `key` SSH julkinen avain.
+  * esim.
 
+    ```yaml
+    - name: Set authorized key taken from a file
+      ansible.posix.authorized_key:
+        user: charlie
+        state: present
+        key: "{{ lookup('file', '/home/charlie/.ssh/id_rsa.pub') }}"
+    ```
 
 
 
