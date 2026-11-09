@@ -141,3 +141,18 @@ SSH automaattinen kirjatumisen tein kopioimalla jo olemassa olevani julkisen ava
 Testasin, että SSH avain toimii ottamalla jälleen yhteyden ansible käyttäjään komennolla `ssh ansible@localhost`. Salasanaa ei kysytty, joten automaattinen kirjautuminen SSH:lla onnistui.
 
 <img width="467" height="118" alt="image" src="https://github.com/user-attachments/assets/e816c56d-d1db-4a87-a051-8c61b1c1a627" />
+
+## b) Ansiblella tehty SSH:lla kirjautuva tunnus.
+Tämän harjoituksen suorittamiseen käytin apuna Karvisen 2026 Passwordless Sudo with Ansible artikkelia. 
+
+Alkuun loin kokonaan uuden roolin, jolle sitten asettaisin asetukset. Tein tämän menemällä ansible hakemistooni `cd ansible` ja siellä komennolla `mkdir -p roles/jemsku/tasks`, jossa mkdir luo uuden hakemistopolun ja -p kaikki puuttuvat yläkansiot jos niitä tarvitaan. 
+
+<img width="270" height="117" alt="image" src="https://github.com/user-attachments/assets/f3e35568-889a-41e1-b6da-3d78fd579a7d" />
+
+Minun piti vielä lisätä main.yml, jonka tein komennolla `micro roles/jemsku/tasks/main.yml`, jossa micro on tekstieditori, jolla main.yml luotiin ja jolla sinne voi kirjoittaa.
+
+<img width="302" height="126" alt="image" src="https://github.com/user-attachments/assets/f4df4527-9bb1-40d0-bf93-c721d011de13" />
+
+Minun täytyi kopioida julkisen SSH avaimen tiedot main.yml, joten hain ne komennolla `cat ~/.ssh/id_ed25519.pub` ja kopioin ne. Seuraavaksi menin muokkaamaan main.yml tiedostoa jälleen micro komennolla. Lisäsin sinne seuraavat attribuutit:
+
+
