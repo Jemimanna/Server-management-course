@@ -16,4 +16,67 @@
 * `ansible-playbook site.yml --ask-become-password` kysyy sudo salasanaa.
 #### Omat huomiot
 * Aika outoa, että pitää erikseen kysyä Ansiblea kysymään salasanaa.
-###
+### Ansible-doc
+* `copy` kopioi tiedoston tai hakemiston johonkin sijaintiin.
+  * `content` asettaa tiedoston sisällöksi suoraan määritetyn arvon.
+  * `dest` remote absoluuttinen polku, johon tiedosto/hakemisto kopioidaan.
+  * `src` paikallinen polku kopioitavalle tiedostolle.
+  * `owner` käyttäjän nimi, joka omistaa tiedoston/hakemiston.
+  * `group` ryhmän nimi, jolle tiedosto kuuluu.
+  * `mode` määrittää käyttöoikeudet tiedostolle/hakemistolle.
+  * esim.
+  
+    ```yaml
+    - name: Copy file with owner and permissions
+      ansible.builtin.copy:
+        src: /srv/myfiles/foo.conf
+        dest: /etc/foo.conf
+        owner: foo
+        group: foo
+        mode: '0644'
+    ```
+* `apt` hallinnoi apt paketteja (Debian/Ubuntu).
+  * `name` lista pakettien nimistä.
+  * `state` ilmaisee paketin halutun tilan.
+  * `update_cache` päivittää tiedot saatavilla olevista paketti päivityksistä.
+  * esim.
+
+    ```yaml
+    - name: Update all packages to their latest version
+      ansible.builtin.apt:
+        name: "*"
+        state: latest
+    ```
+
+* `file` asettaa attribuutteja tiedostoille, hakemistoille tai symbolisille linkeille tai niitä voi poistaa.
+  * `path` polku tiedostoon, jota hallitaan.
+  * `recurse` asettaa määritetyt tiedoston ominaisuudet hakemiston sisällä oleville tiedostoille rekursiivisesti.
+  * `src` polku tiedostoon, johon symbolinen linkki osoittaa.
+  * `state` jos `absent` tarkoittaa, että hakemisto poistetaan ja tiedostot ja symboliset linkit unlinkataan.
+  * `owner` käyttäjän nimi, joka omistaa tiedostojärjestelmän kohteen.
+  * `group` ryhmän nimi, joka omistaa tiedostojärjestelmän kohteen.
+  * `mode` määrittää käyttöoikeudet, jotka tiedostojärjestelmän kohteella ovat.
+  * esim.
+
+    ```yaml
+    - name: Create a symbolic link
+      ansible.builtin.file:
+        src: /file/to/link/to
+        dest: /path/to/symlink
+        owner: foo
+        group: foo
+        state: link
+    ```
+  * `user` hallinnoi käyttäjiä ja niiden attribuutteja.
+    * `name`
+    * `create_home`
+    * `comment`
+    * `groups`
+    * `shell`
+    * `state`
+    * `system`
+
+
+
+
+
