@@ -155,4 +155,31 @@ Minun piti vielä lisätä main.yml, jonka tein komennolla `micro roles/jemsku/t
 
 Minun täytyi kopioida julkisen SSH avaimen tiedot main.yml, joten hain ne komennolla `cat ~/.ssh/id_ed25519.pub` ja kopioin ne. Seuraavaksi menin muokkaamaan main.yml tiedostoa jälleen micro komennolla. Lisäsin sinne seuraavat attribuutit:
 
+<img width="550" height="157" alt="image" src="https://github.com/user-attachments/assets/0b256485-faca-4c06-a026-ab54cc29cef2" />
+
+Tarkistin vielä `cat` komennon avulla, että ne tallentuivat sinne.
+
+<img width="535" height="174" alt="image" src="https://github.com/user-attachments/assets/cf8e79fd-ec86-477b-addf-9545c4aac8ea" />
+
+
+Seuraavaksi menin site.yml tiedostoon komennolla `micro site.yml` ja lisäsin sinne uuden roolin `jemsku` ja `become: true`, joka kysyy sudo oikeuksia.
+
+<img width="89" height="56" alt="image" src="https://github.com/user-attachments/assets/b50d306b-38e4-4674-b9dc-faad462f7532" />
+
+Tämän jälkeen ajoin komennon `ansible-playbook site.yml` ja se valitti, ettei ole sudo salasanaa.
+
+<img width="469" height="139" alt="image" src="https://github.com/user-attachments/assets/623aec51-aa6d-4cf6-a037-fb44069bd152" />
+
+Sitten korjatakseni tämän, ajoin komennon `ansible-playbook site.yml -K`, jossa -K kysyy sudo salasanaa. Site.yml ajettiin ja näkyi, että neljä muutosta on tapahtunut.
+
+<img width="743" height="283" alt="image" src="https://github.com/user-attachments/assets/44fc7e27-088c-4fa6-9e20-16ed0b37dd06" />
+
+Ajoin komennon vielä uudelleen tarkistaakseni, ettei kaikki tarvittavat muutokset oli nyt tehty. Sain vastaukseksi ok=6 ja kaikki muut nollaa, eli se oli oikein.
+
+<img width="739" height="281" alt="image" src="https://github.com/user-attachments/assets/741413dc-86e5-4a50-b313-f10bcad43b04" />
+
+Sitten viimein testasin SSH kirjautumista komennolla `ssh jemsku@localhost` ja minulta ei kysytty salasanaa ja pääsin suoraan käyttäjälle. Tarkistin vielä, että se oli oikeasti jemsku käyttäjä komennoilla `whoami`, joka kertoo kuka käyttäjä on kyseessä ja komennolla `pwd`, joka näyttää käyttäjän kotihakemiston.
+
+<img width="480" height="145" alt="image" src="https://github.com/user-attachments/assets/a846be57-4f44-4566-a1ee-2c360546396f" />
+
 
