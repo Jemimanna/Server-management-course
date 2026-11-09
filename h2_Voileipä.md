@@ -182,4 +182,15 @@ Sitten viimein testasin SSH kirjautumista komennolla `ssh jemsku@localhost` ja m
 
 <img width="480" height="145" alt="image" src="https://github.com/user-attachments/assets/a846be57-4f44-4566-a1ee-2c360546396f" />
 
+## c) Kahden paketin asennus
+Tämän tehtävän suoritukseen käytin tietoja, joita on `ansible-doc apt` dokumentaatiossa.
+
+
+
+
+
+
+
+
+
 
