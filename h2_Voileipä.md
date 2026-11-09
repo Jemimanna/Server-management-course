@@ -187,6 +187,16 @@ Tämän tehtävän suoritukseen käytin tietoja, joita on `ansible-doc apt` doku
 
 Päätin testata ladata tree ja curl paketit ansiblella. Menin muokkaamaan site.yml komennolla `micro site.yml`. Katsoin `ansible-doc apt` dokumentaatiosta esimerkeistä mallia ja lisäsin site.yml seuraavat tiedot:
 
+```yaml
+tasks:
+  - name: Lataa tree ja curl
+    ansible.builtin.apt:
+      name:
+        - tree
+        - curl
+      state: present
+```
+
 <img width="176" height="128" alt="image" src="https://github.com/user-attachments/assets/d4deb0f7-830f-4f6b-8e84-dddc5892db34" />
 
 Koska minulla oli ladattu jo tree ja curl, piti testata toimiiko lataus ensiksi poistamalla ne. Tämän tein komennolla `sudo apt remove tree curl`. Testasin vielä, että komennot eivät vastanneet.
@@ -205,6 +215,15 @@ Tämän jälkeen kokeilin, että tree ja curl oli latautunut uudelleen testaamal
 Tässä harjoituksessa käytin apuna `ansible-doc file` dokumentaatiota.
 
 Aluksi loin uuden tiedoston komennolla `micro /home/jemima/tiedostoteksti.txt` ja kirjoitin sinne tekstiä. Seuraavaksi menin jälleen muokkaamaan site.yml tiedostoa. Lisäsin sieltä malli esimerkin `ansible-doc file` mukaan seuraavat tiedot:
+
+```yaml
+- name: Tiedosto
+  ansible.builtin.file:
+    path: /home/jemima/tiedostoteksti.txt
+    owner: jemima
+    group: jemima
+    mode: '0640'
+```
 
 <img width="244" height="187" alt="image" src="https://github.com/user-attachments/assets/18879185-eeec-412a-9771-3369974e2855" />
 
@@ -229,6 +248,13 @@ Käytin seuraavaa esimerkkiä apuna:
 
 Lisäsin site.yml tiedostoon seuraavat tiedot:
 
+```yaml
+- name: Kommentti
+  ansible.builtin.user:
+    name: jemima
+    comment: tämä on minun käyttäjäni
+```
+
 <img width="253" height="240" alt="image" src="https://github.com/user-attachments/assets/ad3cd13b-24a4-4a4f-88ad-ffef6c51fe0f" />
 
 Sitten ajoin `ansible-playbook site.yml -K`. Se jälleen näytti, että muutos oli tapahtunut ja ajoin komennon vielä kerran, jotta sain kaikki ok.
@@ -240,5 +266,7 @@ Sieltä näin, että kommentti oli näkyvillä jemima käyttäjällä:
 <img width="472" height="25" alt="image" src="https://github.com/user-attachments/assets/85b5c6fd-036b-4a0a-b99c-93f7807af916" />
 
 ## Lähteet
-*
-
+* Ansible-doc, copy, apt, file, user, authorized_key dokumentaatio. Luettu: 10.11.2026.
+* Karvinen, T. 2026. Passwordless Sudo with Ansible. Luettavissa: https://terokarvinen.com/passwordless-sudo-with-ansible/. Luettu: 10.11.2026.
+* Karvinen, T. 2026. SSH public key - Login without password. Luettavissa: https://terokarvinen.com/ssh-public-key-login-without-password/. Luettu: 10.11.2026.
+* Karvinen, T. 2026. Sudo without password. Luettavissa: https://terokarvinen.com/passwordless-sudo/. Luettu: 10.11.2026.
