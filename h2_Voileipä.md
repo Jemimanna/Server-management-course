@@ -185,12 +185,23 @@ Sitten viimein testasin SSH kirjautumista komennolla `ssh jemsku@localhost` ja m
 ## c) Kahden paketin asennus
 Tämän tehtävän suoritukseen käytin tietoja, joita on `ansible-doc apt` dokumentaatiossa.
 
+Päätin testata ladata tree ja curl paketit ansiblella. Menin muokkaamaan site.yml komennolla `micro site.yml`. Katsoin `ansible-doc apt` dokumentaatiosta esimerkeistä mallia ja lisäsin site.yml seuraavat tiedot:
 
+<img width="176" height="128" alt="image" src="https://github.com/user-attachments/assets/d4deb0f7-830f-4f6b-8e84-dddc5892db34" />
 
+Koska minulla oli ladattu jo tree ja curl, piti testata toimiiko lataus ensiksi poistamalla ne. Tämän tein komennolla `sudo apt remove tree curl`. Testasin vielä, että komennot eivät vastanneet.
 
+<img width="365" height="215" alt="image" src="https://github.com/user-attachments/assets/d091020a-ba68-4ff9-abb7-34cdad9d26cc" />
 
+Sitten ajoin komennon `ansible-playbook site.yml -K`, jossa näkyi changed=1.
 
+<img width="737" height="308" alt="image" src="https://github.com/user-attachments/assets/118bb61b-6d98-41b1-8a81-3d112212d484" />
 
+Tämän jälkeen kokeilin, että tree ja curl oli latautunut uudelleen testaamalla vastaavatko ne komentoon. Nyt olin siis saanut ladattua kaksi eri pakettia ansiblella.
+
+<img width="461" height="353" alt="image" src="https://github.com/user-attachments/assets/43fb7d68-1228-4d63-8b13-07d88293a72d" />
+
+## d) File
 
 
 
