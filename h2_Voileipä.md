@@ -271,3 +271,4 @@ Sieltä näin, että kommentti oli näkyvillä jemima käyttäjällä:
 * Karvinen, T. 2026. Passwordless Sudo with Ansible. Luettavissa: https://terokarvinen.com/passwordless-sudo-with-ansible/. Luettu: 10.11.2026.
 * Karvinen, T. 2026. SSH public key - Login without password. Luettavissa: https://terokarvinen.com/ssh-public-key-login-without-password/. Luettu: 10.11.2026.
 * Karvinen, T. 2026. Sudo without password. Luettavissa: https://terokarvinen.com/passwordless-sudo/. Luettu: 10.11.2026.
+* Munroe. 2006. xkcd 149: Sandwich. Luettavissa: https://xkcd.com/149/. Luettu: 10.11.2026.
