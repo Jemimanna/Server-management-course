@@ -95,6 +95,39 @@
         state: present
         key: "{{ lookup('file', '/home/charlie/.ssh/id_rsa.pub') }}"
     ```
+### Omat huomiot
+* Ansible-doc auttaa huomattavasti löytämään tarvittavat attribuutit omaan käyttöön. Esimerkit havainnollistavat hyvin, miten attribuutit kuuluu asetella.
+
+## a) Sudoless
+Tämän harjoituksen suorittamiseen käytin apuna Karvisen 2026 Sudo without password artikkelia.
+
+Loin ensiksi uuden käyttäjän ansible komennolla `sudo adduser ansible`.
+
+<img width="262" height="130" alt="image" src="https://github.com/user-attachments/assets/b3f09825-0af5-4d2e-bdf7-8c3cd7e5d3d0" />
+
+Seuraavaksi loin uuden ryhmän sudoless komennolla `sudo groupadd sudoless`.
+
+<img width="204" height="22" alt="image" src="https://github.com/user-attachments/assets/71eaee52-75db-4b7f-9d0b-8766a5c6daa5" />
+
+Sitten lisäsin ansible käyttäjän ryhmään sudoless komenolla `sudo adduser ansible sudoless`.
+
+<img width="239" height="20" alt="image" src="https://github.com/user-attachments/assets/a884a8a9-8ea5-4d8f-8c14-559a5e407464" />
+
+Seuraavaksi loin komenolla `sudo visudo /etc/sudoers.d/sudoless` tiedoston, johon laitoin säännöt kaikille, jotka kuuluvat sudoless ryhmään. Visudo ajaa tekstieditorin ja /etc/sudoers.d/sudoless on polku, johon luodaan tekstitiedosto.
+
+<img width="266" height="19" alt="image" src="https://github.com/user-attachments/assets/7a83bc9c-3881-4c2a-96d5-19f7a97abc94" />
+
+Sinne lisäsin `%sudoless ALL = (ALL) NOPASSWD: ALL`, jossa:
+* `%sudoless` tarkoittaa ryhmää.
+* `ALL` tarkoittaa kaikkia tietokoneita.
+* `(ALL)` tarkoittaa, että käyttäjä saa suorittaa komentoja, minkä vaan käyttäjän oikeuksilla myös root.
+* `NOPASSWD` tarkoittaa, ettei kysytä salasanaa.
+* `ALL` tarkoittaa, että kaikki komennot sallitaan.
+
+<img width="176" height="24" alt="image" src="https://github.com/user-attachments/assets/5ff86fee-e3b9-4d72-8264-35ee73ac3e40" />
+
+Seuraavaksi testasin 
+
 
 
 
