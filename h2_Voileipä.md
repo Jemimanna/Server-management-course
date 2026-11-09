@@ -216,3 +216,29 @@ Oikeudet ovat tiedostolle, että omistajalla on 6 eli read ja write oikeudet, ry
 
 <img width="374" height="32" alt="image" src="https://github.com/user-attachments/assets/8d3e94f4-ee09-4b33-abc6-f1d0d027df35" />
 
+## Comment attribuutti
+Tähän tehtävään käytin apuna `ansible-doc user` dokumentaatiota.
+
+Halusin testata comment attribuuttia, jonka tarkoitus on lisätä selitys tai "kommentti" käyttäjätilille.
+
+<img width="311" height="56" alt="image" src="https://github.com/user-attachments/assets/7a5153da-9684-4b0b-925a-8a463e78fae0" />
+
+Käytin seuraavaa esimerkkiä apuna:
+
+<img width="409" height="74" alt="image" src="https://github.com/user-attachments/assets/6d0cf8f1-702e-4576-a137-62cd88037f72" />
+
+Lisäsin site.yml tiedostoon seuraavat tiedot:
+
+<img width="253" height="240" alt="image" src="https://github.com/user-attachments/assets/ad3cd13b-24a4-4a4f-88ad-ffef6c51fe0f" />
+
+Sitten ajoin `ansible-playbook site.yml -K`. Se jälleen näytti, että muutos oli tapahtunut ja ajoin komennon vielä kerran, jotta sain kaikki ok.
+
+<img width="583" height="88" alt="image" src="https://github.com/user-attachments/assets/223745ca-3a7a-4060-ad8c-7906c6827c0e" />
+
+Sieltä näin, että kommentti oli näkyvillä jemima käyttäjällä:
+
+<img width="472" height="25" alt="image" src="https://github.com/user-attachments/assets/85b5c6fd-036b-4a0a-b99c-93f7807af916" />
+
+## Lähteet
+*
+
