@@ -185,7 +185,7 @@ Sitten viimein testasin SSH kirjautumista komennolla `ssh jemsku@localhost` ja m
 ## c) Kahden paketin asennus
 Tämän tehtävän suoritukseen käytin tietoja, joita on `ansible-doc apt` dokumentaatiossa.
 
-Päätin testata ladata tree ja curl paketit ansiblella. Menin muokkaamaan site.yml komennolla `micro site.yml`. Katsoin `ansible-doc apt` dokumentaatiosta esimerkeistä mallia ja lisäsin site.yml seuraavat tiedot:
+Päätin testata ladata tree ja curl paketit ansiblella. Menin muokkaamaan site.yml komennolla `micro site.yml`. Katsoin `ansible-doc apt` dokumentaatiosta esimerkeistä mallia ja lisäsin site.yml seuraavat tiedot, `state: present` varmisti, että jos tree tai curl ei ollut asennettu, niin ne asennettiin:
 
 ```yaml
 tasks:
@@ -196,6 +196,7 @@ tasks:
         - curl
       state: present
 ```
+
 
 <img width="176" height="128" alt="image" src="https://github.com/user-attachments/assets/d4deb0f7-830f-4f6b-8e84-dddc5892db34" />
 
@@ -214,7 +215,7 @@ Tämän jälkeen kokeilin, että tree ja curl oli latautunut uudelleen testaamal
 ## d) File
 Tässä harjoituksessa käytin apuna `ansible-doc file` dokumentaatiota.
 
-Aluksi loin uuden tiedoston komennolla `micro /home/jemima/tiedostoteksti.txt` ja kirjoitin sinne tekstiä. Seuraavaksi menin jälleen muokkaamaan site.yml tiedostoa. Lisäsin sieltä malli esimerkin `ansible-doc file` mukaan seuraavat tiedot:
+Aluksi loin uuden tiedoston komennolla `micro /home/jemima/tiedostoteksti.txt` ja kirjoitin sinne tekstiä. Seuraavaksi menin jälleen muokkaamaan site.yml tiedostoa. Lisäsin sieltä malli esimerkin `ansible-doc file` mukaan seuraavat tiedot: `path: /home/jemima/tiedostoteksti.txt` tarkoitti polkua, johon muutokset tehtiin, `owner: jemima` tiedoston omistajaa, `group: jemima` tiedoston ryhmää ja `mode: '0640'` tiedostolle annettuja oikeuksia:
 
 ```yaml
 - name: Tiedosto
