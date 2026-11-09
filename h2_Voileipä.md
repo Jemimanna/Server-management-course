@@ -202,6 +202,17 @@ Tämän jälkeen kokeilin, että tree ja curl oli latautunut uudelleen testaamal
 <img width="461" height="353" alt="image" src="https://github.com/user-attachments/assets/43fb7d68-1228-4d63-8b13-07d88293a72d" />
 
 ## d) File
+Tässä harjoituksessa käytin apuna `ansible-doc file` dokumentaatiota.
 
+Aluksi loin uuden tiedoston komennolla `micro /home/jemima/tiedostoteksti.txt` ja kirjoitin sinne tekstiä. Seuraavaksi menin jälleen muokkaamaan site.yml tiedostoa. Lisäsin sieltä malli esimerkin `ansible-doc file` mukaan seuraavat tiedot:
 
+<img width="244" height="187" alt="image" src="https://github.com/user-attachments/assets/18879185-eeec-412a-9771-3369974e2855" />
+
+Ajoin komennon `ansible-playbook site.yml -K`, joka näytti changed=1 ja ei virheilmoituksia. Ajoin komennon vielä uudestaan ja sitten sain ok=8 ja muut 0.
+
+<img width="737" height="340" alt="image" src="https://github.com/user-attachments/assets/f426249f-a6d6-4f0a-9174-ce0bc9e920ba" />
+
+Oikeudet ovat tiedostolle, että omistajalla on 6 eli read ja write oikeudet, ryhmällä 4 eli read oikeudet ja kaikilla muilla ei ole mitään oikeuksia. Eli siis `-rw-r-----`, jossa ensimmäinen viiva - tarkoittaa että tiedosto ei ole hakemisto (d), rw- on omistajan osio (read, write, -), r-- ryhmän osio (read, -, -) ja --- kaikki muut eli ei mitään oikeuksia.
+
+<img width="374" height="32" alt="image" src="https://github.com/user-attachments/assets/8d3e94f4-ee09-4b33-abc6-f1d0d027df35" />
 
