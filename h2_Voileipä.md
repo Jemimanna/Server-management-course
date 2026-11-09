@@ -236,7 +236,7 @@ Oikeudet ovat tiedostolle, että omistajalla on 6 eli read ja write oikeudet, ry
 
 <img width="374" height="32" alt="image" src="https://github.com/user-attachments/assets/8d3e94f4-ee09-4b33-abc6-f1d0d027df35" />
 
-## Comment attribuutti
+## e) Comment attribuutti
 Tähän tehtävään käytin apuna `ansible-doc user` dokumentaatiota.
 
 Halusin testata comment attribuuttia, jonka tarkoitus on lisätä selitys tai "kommentti" käyttäjätilille.
