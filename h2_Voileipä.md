@@ -99,7 +99,7 @@
 * Ansible-doc auttaa huomattavasti löytämään tarvittavat attribuutit omaan käyttöön. Esimerkit havainnollistavat hyvin, miten attribuutit kuuluu asetella.
 
 ## a) Sudoless
-Tämän harjoituksen suorittamiseen käytin apuna Karvisen 2026 Sudo without password artikkelia.
+Tämän harjoituksen suorittamiseen käytin apuna Karvisen 2026 Sudo without password artikkelia ja Karvisen 2026 SSH public key - Login without password artikkelia.
 
 Loin ensiksi uuden käyttäjän ansible komennolla `sudo adduser ansible`.
 
@@ -126,9 +126,18 @@ Sinne lisäsin `%sudoless ALL = (ALL) NOPASSWD: ALL`, jossa:
 
 <img width="176" height="24" alt="image" src="https://github.com/user-attachments/assets/5ff86fee-e3b9-4d72-8264-35ee73ac3e40" />
 
-Seuraavaksi testasin 
+Seuraavaksi testasin, ottaa ssh yhteyden komennolla `ssh ansible@localhost` ja siellä ajoin komennon `sudo -k`, joka unohtaa, jos olisin antanut sudo komentoja ansible käyttäjällä.
 
+<img width="470" height="142" alt="image" src="https://github.com/user-attachments/assets/d3f71592-0daa-48dd-9fc8-03097ea54857" />
 
+Nyt kun olin ansible käyttäjällä testasin, ettei ansible käyttäjältä kysytä salasanaa sudo komennon yhteydessä. Ajoin komennon `sudo echo "Minulta ei kysytty salasanaa!"`. Salasanaa ei kysytty, joten sudo without password onnistui.
 
+<img width="310" height="32" alt="image" src="https://github.com/user-attachments/assets/61cdb4cc-44d0-4c0c-bb24-c5f13245a15c" />
 
+SSH automaattinen kirjatumisen tein kopioimalla jo olemassa olevani julkisen avaimen tiedot ansible käyttäjälle. Tämän tein suorittamalla komennon `ssh-copy-id ansible@localhost`.
 
+<img width="467" height="151" alt="image" src="https://github.com/user-attachments/assets/ea48b94d-2b63-45d2-8232-c654c6ce6322" />
+
+Testasin, että SSH avain toimii ottamalla jälleen yhteyden ansible käyttäjään komennolla `ssh ansible@localhost`. Salasanaa ei kysytty, joten automaattinen kirjautuminen SSH:lla onnistui.
+
+<img width="467" height="118" alt="image" src="https://github.com/user-attachments/assets/e816c56d-d1db-4a87-a051-8c61b1c1a627" />
