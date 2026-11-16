@@ -101,6 +101,8 @@ Tämän jälkeen ajoin komennon `micro ~/public_html/index.html` ja vaihdoin tek
 <img width="221" height="146" alt="image" src="https://github.com/user-attachments/assets/c5b5ec18-097c-4534-8dfb-26743f11d886" />
 
 ## b) Nginx asennus käsin
+Tämän tehtävän suoritukseen käytin apuna aiemmassa tehtävässä oppimiani asioita,  Karvisen 2008 Install Apache Web Server on Ubuntu ja ChatGPT -tekoälyä, joka käytti lähteinään Nginx Beginner's Guide ja Ubuntu Server How to configure Nginx.
+
 Ennen kuin pystyin ladata Nginx piti sammuttaa Apache 2. Tein tämän komennolla `sudo systemctl stop apache2` ja sen jälkeen tarkistin sammuiko se komennolla `systemctl is-active apache2`, joka antoi vastaukseksi inactive eli se oli poissa päältä.
 
 <img width="236" height="59" alt="image" src="https://github.com/user-attachments/assets/38ab64f3-963a-4039-8d13-3873da243ec7" />
@@ -197,5 +199,16 @@ Nyt index.html sivusto tuli jälleen näkyviin. Testasin myös vielä ihan lopuk
 
 <img width="782" height="408" alt="image" src="https://github.com/user-attachments/assets/c2cb11cc-7790-4eab-8658-7a0ffd44c831" />
 
-
-
+## Lähteet
+* Apache. Access Control. Luettavissa: https://httpd.apache.org/docs/2.4/howto/access.html. Luettu: 16.11.2026.
+* Apache. Apache Module mod_userdir. Luettavissa: https://httpd.apache.org/docs/2.4/mod/mod_userdir.html. Luettu: 16.11.2026.
+* Ansible Community Documentation. Handlers: running operations on change. Luettavissa: https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_handlers.html. Luettu: 16.11.2026.
+* Ansible-doc service sivut. Luettu: 16.11.2026.
+* eniac111. Show HN: Bor - Open-source policy management for Linux desktops. Hacker News. Luettavissa: https://news.ycombinator.com/item?id=49142569. Luettu: 16.11.2026.
+* Karvinen, T. 2026. Apache installed with Ansible - quick notes. Luettavissa: https://terokarvinen.com/apache-ansible/. Luettu: 16.11.2026.
+* Karvinen, T. 2008. Install Apache Web Server on Ubuntu. Luettavissa: https://terokarvinen.com/2008/05/02/install-apache-web-server-on-ubuntu-4/index.html. Luettu: 16.11.2026.
+* Karvinen, T. 2026. Palvelinten hallinta: h3 Demoni: vinkit. Luettavissa: https://terokarvinen.com/palvelinten-hallinta/#laksyt. Luettu: 16.11.2026.
+* Nginx. Beginner's Guide. Luettavissa: https://nginx.org/en/docs/beginners_guide.html. Luettu: 16.11.2026.
+* Petrov, B. 2.8.2026. Bor v0.8.0 released. Luettavissa: https://getbor.dev/blog/2026-08-02-bor-v080-release/. Luettu: 16.11.2026.
+* Ubuntu. How to configure nginx. Luettavissa: https://ubuntu.com/server/docs/how-to/web-services/configure-nginx. Luettu: 16.11.2026. 
+* Ubuntu. How to install Apache2. Luettavissa: https://ubuntu.com/server/docs/how-to/web-services/install-apache2. Luettu: 16.11.2026.
