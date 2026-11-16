@@ -31,7 +31,7 @@
 * Versio 0.8.0 lisäsi kolme uutta käytäntötyyppiä: Thunderbird, Microsoft Edge for Business ja Firewalld zones.
 * Versio toi myös mm. vahvistetun tietoturva järjestelmän, mahdollisuuden jakaa ylläpitotehtäviä tarkemmin ja Web UI overhaul uudistuksen, joka muutti mm. navigaatiota ja lisäsi URL reitityksen.
 
-## a) Apassi
+## a) Apache 2 asennus käsin
 Tämän tehtävän suoritukseen käytin apuna Karvisen 2026 Apache installed with Ansible - quick notes artikkelia, Karvisen 2008 Install Apache Web Server on Ubuntu ja ChatGPT -tekoälyä.
 
 Ensiksi asensin Apache2 komennolla `sudo apt-get install apache2`. Asennuksessa kesti hetki.
@@ -100,7 +100,7 @@ Tämän jälkeen ajoin komennon `micro ~/public_html/index.html` ja vaihdoin tek
 
 <img width="221" height="146" alt="image" src="https://github.com/user-attachments/assets/c5b5ec18-097c-4534-8dfb-26743f11d886" />
 
-## b) Moottorix
+## b) Nginx asennus käsin
 Ennen kuin pystyin ladata Nginx piti sammuttaa Apache 2. Tein tämän komennolla `sudo systemctl stop apache2` ja sen jälkeen tarkistin sammuiko se komennolla `systemctl is-active apache2`, joka antoi vastaukseksi inactive eli se oli poissa päältä.
 
 <img width="236" height="59" alt="image" src="https://github.com/user-attachments/assets/38ab64f3-963a-4039-8d13-3873da243ec7" />
@@ -137,5 +137,38 @@ Sitten menin muokkaamaan index.html koodia komennolla `micro ~/public_html/index
 
 <img width="302" height="131" alt="image" src="https://github.com/user-attachments/assets/c00d23e1-a159-41a3-9d12-d94c7a741d5b" />
 
+## c) Automaattinen Nginx asennus Ansiblella
+Tämän tehtävän suoritukseen käytin apuna Karvisen 2026 Apache Installed with Ansible - quick notes artikkelia.
+
+Aluksi menin ansible hakemistoon komennolla `cd ansible` ja vielä `cd roles`. Sitten loin kolme uutta roolia komennoilla `mkdir -p nginx/files`, `mkdir -p nginx/handlers` ja `mkdir -p nginx/tasks`. Tämän jälkeen puu näytti tältä:
+
+<img width="284" height="247" alt="image" src="https://github.com/user-attachments/assets/d0ad0ef0-8cb0-4e6e-919b-f2d7da11e359" />
+
+Seuraavaksi loin tasks hakemistoon main.yml tiedoston, johon lisäsin koodia. Tein tämän komennolla `micro roles/nginx/tasks/main.yml`.
+
+<img width="295" height="203" alt="image" src="https://github.com/user-attachments/assets/c9b8dcbf-cbf3-40e2-921f-befacff1c4b0" />
+
+<img width="297" height="209" alt="image" src="https://github.com/user-attachments/assets/63f33769-af6b-4a5f-9700-b9b5c6f57cde" />
+
+Seuraavaksi loin handlers hakemistolle main.yml tiedoston komennolla `micro roles/handlers/main.yml`. Sinne lisäsin seuraavan koodin:
+
+<img width="148" height="58" alt="image" src="https://github.com/user-attachments/assets/5dd432f7-33e3-41b7-9385-8284c9161b62" />
+
+<img width="302" height="63" alt="image" src="https://github.com/user-attachments/assets/99f4fbf9-b30e-48ad-ae71-2b84692bd8b6" />
+
+Sitten loin files hakemistolle aiemmin mainitsemani example.com.conf tiedoston komennolla `micro roles/nginx/files/example.com.conf`. Sitä varten minun piti etsiä oikeat asetukset. Ajoin komennon `cat /etc/nginx/sites-available/default` ja löysin sieltä esimerkit:
+
+<img width="198" height="57" alt="image" src="https://github.com/user-attachments/assets/1fbbb579-f10f-4297-ba5b-1b994aee20a9" />
+
+
+<img width="410" height="174" alt="image" src="https://github.com/user-attachments/assets/0a73fd72-a549-4910-ba67-9840f38858b1" />
+
+Sitten lisäsin seuraavaan koodin example.com.conf tiedostoon:
+
+<img width="328" height="127" alt="image" src="https://github.com/user-attachments/assets/13a48ac5-dc8d-42ef-8f75-f47481914983" />
+
+Seuraavaksi menin site.yml tiedostoon lisäämään rooleihin nginx roolin, jotta ansible-playbook toimisi. 
+
+<img width="123" height="68" alt="image" src="https://github.com/user-attachments/assets/14084adf-3413-4224-b8e5-b0d30a1a653c" />
 
 
