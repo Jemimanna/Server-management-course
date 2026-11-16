@@ -6,7 +6,7 @@
 * `sudo systemctl restart apache2` starttaa Apache2 kun halutut muokkaukset on tehty.
 * `tasks/main.yml` sisältää tiedot ansiblen koodista.
 * `handlers/main.yml` uudelleenkäynnistys suoritetut palvelut.
-* `files/example.com.conf` hallinnoitu tiedosto, jossa tehdyt muutokset ylikirjoitetaan.
+* `files/example.com.conf` sisältää mm. polun html tiedostoon.
 ### Ansible Community Documentation: Handlers: running operations on change
 * Handlerit ovat tehtäviä, jotka suoritetaan, kun tehdystä muutoksesta on ilmoitettu niille.
 * `notify` käytetään ilmoittamaan nimetyille handlereille tehtävässä tapahtuneesta muutoksesta.
