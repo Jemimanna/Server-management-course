@@ -101,7 +101,41 @@ Tämän jälkeen ajoin komennon `micro ~/public_html/index.html` ja vaihdoin tek
 <img width="221" height="146" alt="image" src="https://github.com/user-attachments/assets/c5b5ec18-097c-4534-8dfb-26743f11d886" />
 
 ## b) Moottorix
-Ennen kuin pystyin ladata Nginx 
+Ennen kuin pystyin ladata Nginx piti sammuttaa Apache 2. Tein tämän komennolla `sudo systemctl stop apache2` ja sen jälkeen tarkistin sammuiko se komennolla `systemctl is-active apache2`, joka antoi vastaukseksi inactive eli se oli poissa päältä.
+
+<img width="236" height="59" alt="image" src="https://github.com/user-attachments/assets/38ab64f3-963a-4039-8d13-3873da243ec7" />
+
+Seuraavaksi päivitin pakettiluettelon komennolla `sudo apt-get update` ja latasin nginx komenolla `sudo apt-get install nginx`.
+
+<img width="470" height="400" alt="image" src="https://github.com/user-attachments/assets/2ce1916f-8c25-4032-a795-9d283094c4f8" />
+
+Nyt kun se oli ladattu niin käynnistin sen komennolla `sudo systemctl start nginx` ja tarkistin, että se oli active komennolla `systemctl status nginx`.
+
+<img width="468" height="179" alt="image" src="https://github.com/user-attachments/assets/f9790b6d-7387-4cdf-939a-2e114d745bc0" />
+
+Seuraavaksi menin muokkaamaan nginx asetuksia komennolla `sudo micro /etc/nginx/sites-available/default`. Käytin seuraavaa kohtaa mallina ja myös aiemmin tekemiäni asetuksia mitä apacheen laitoin.
+
+<img width="404" height="129" alt="image" src="https://github.com/user-attachments/assets/85423cb8-e66e-49d1-ac4d-0122de2575ef" />
+
+Muokkasin root polun `/home/jemima/public_html;` ja lisäsin sen alapuolelle `index index.html;`.
+
+<img width="206" height="34" alt="image" src="https://github.com/user-attachments/assets/6f317a9f-7e19-48fc-a811-95b4f63fea89" />
+
+Tämän jälkeen tarkistin, että nginx asetukset olivat oikein komennolla `sudo nginx -t`, joka toimii suht samalla tavalla kuin apachen `sudo apache2ctl configtest`, jota käytin aiemmassa tehtävässä. Sain vastaukseksi, että test is successful eli kaikki oli ok.
+
+<img width="334" height="40" alt="image" src="https://github.com/user-attachments/assets/42fb315a-bb52-4651-8d37-53be23a6f40b" />
+
+Sitten käynnistin nginx uudestaan komennolla `sudo systemctl restart nginx`, jotta asetukset tulisivat voimaan. Menin tarkistamaan, että aiemmin tekemäni index.html sivuston näkyisi http://localhost sivulla nginx välityksellä. En tajunnut ottaa kuvaa, mutta ennen kuin nginx asetukset oli asetettu näkyi pelkkä Apachen oletussivusto eikä index.html enään. Nyt kuitenkin sivusto tuli jälleen näkyviin.
+
+<img width="286" height="101" alt="image" src="https://github.com/user-attachments/assets/dc3d447e-7980-4c0b-955b-346e3f3fe3cd" />
+
+Jälleen piti vielä testata, että normi käyttäjä voi muokata sivustoa, joten tarkistin käyttäjäni komennolla `whoami`.
+
+<img width="139" height="35" alt="image" src="https://github.com/user-attachments/assets/c91a10f7-602f-4ee8-983f-ebf5eb4d6cb5" />
+
+Sitten menin muokkaamaan index.html koodia komennolla `micro ~/public_html/index.html`. Lisäsin sinne tekstiä ja menin katsomaan muuttuiko http://localhost sivuston tiedot. Tekstit oli ilmestynyt eli muokkaus onnistui ilman sudoa normi käyttäjänä nginxin avulla.
+
+<img width="302" height="131" alt="image" src="https://github.com/user-attachments/assets/c00d23e1-a159-41a3-9d12-d94c7a741d5b" />
 
 
 
