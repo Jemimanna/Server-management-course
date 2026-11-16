@@ -32,7 +32,7 @@
 * Versio toi myös mm. vahvistetun tietoturva järjestelmän, mahdollisuuden jakaa ylläpitotehtäviä tarkemmin ja Web UI overhaul uudistuksen, joka muutti mm. navigaatiota ja lisäsi URL reitityksen.
 
 ## a) Apache 2 asennus käsin
-Tämän tehtävän suoritukseen käytin apuna Karvisen 2026 Apache installed with Ansible - quick notes artikkelia, Karvisen 2008 Install Apache Web Server on Ubuntu ja ChatGPT -tekoälyä.
+Tämän tehtävän suoritukseen käytin apuna Karvisen 2026 Apache installed with Ansible - quick notes artikkelia, Karvisen 2008 Install Apache Web Server on Ubuntu ja ChatGPT -tekoälyä, joka käytti lähteinään Apache HTTP Server Documentation - mod_userdir, Apache HTTP Server Documentation - Authorization ja Ubuntu Server Documentation - Apache2.
 
 Ensiksi asensin Apache2 komennolla `sudo apt-get install apache2`. Asennuksessa kesti hetki.
 
@@ -56,7 +56,7 @@ Selaimeen kirjoitin http://localhost/~jemima/ ja aukesi seuraavanlainen sivu:
 
 <img width="206" height="128" alt="image" src="https://github.com/user-attachments/assets/84a60795-fbbd-4042-bb9c-890f6fa3cae6" />
 
-Tämä tarkoitti, että oikeudet oli asetettu väärin käyttäjille. Tehtävän loppusuorituksessa pyysin apua ChatGPT -tekoälyltä, sillä en ollenkaan tiennyt miten edetä tehtävässä. Se käytti lähteinä vastauksilleen Apache HTTP Server Documentation - mod_userdir, Apache HTTP Server Documentation - Authorization ja Ubuntu Server Documentation - Apache2 (2026).
+Tämä tarkoitti, että oikeudet oli asetettu väärin käyttäjille. Tehtävän loppusuorituksessa pyysin apua ChatGPT -tekoälyltä, sillä en ollenkaan tiennyt miten edetä tehtävässä. Se käytti lähteinä vastauksilleen Apache HTTP Server Documentation - mod_userdir, Apache HTTP Server Documentation - Authorization ja Ubuntu Server Documentation - Apache2.
 
 Ajoin komennot `ls -ld ~` ja `ls -ld ~/public_html`, jotta näyttivät, mitkä oikeudet kotihakemistossa sekä public_html olivat.
 
@@ -81,10 +81,11 @@ Nyt kun olin luonut koodin, jota pystyn muokata ilman sudoa, piti mennä muokkaa
     Require all granted
 </Directory>
 ```
+Tässä require all granted antoi kaikille pääsyn kansion sisältöön verkkosivuston kautta.
 
 <img width="413" height="329" alt="image" src="https://github.com/user-attachments/assets/52de0337-245b-4823-9c96-7498636443e0" />
 
-Sitten ajoin komennon `sudo apache2ctl configtest`, joka tarkisti oliko asetuksissa mitään kirjoitusvirheitä. Syntax OK viesti tarkoittaa, että kaikki oli kunnossa. Tämän jälkeen käynnistin apache2 uudelleen komennolla `sudo systemctl restart apache2`. Tässä vaiheessa sivustolla ei vielä näkynyt index.html tiedostoani, sillä olin vahingossa luonut sen kotihakemistooni enkä public_html hakemistoon. Joten siirsin sen sinne komennolla `mv ~/index_html ~/public_html/index_html`
+Sitten ajoin komennon `sudo apache2ctl configtest`, joka tarkisti oliko asetuksissa mitään kirjoitusvirheitä. Syntax OK viesti tarkoittaa, että kaikki oli kunnossa. Tämän jälkeen käynnistin apache2 uudelleen komennolla `sudo systemctl restart apache2`. Tässä vaiheessa sivustolla ei vielä näkynyt index.html tiedostoani, sillä olin vahingossa luonut sen kotihakemistooni enkä public_html hakemistoon. Joten siirsin sen sinne komennolla `mv ~/index_html ~/public_html/index_html`. Komento tarkoittaa move eli siirrä.
 
 <img width="305" height="48" alt="image" src="https://github.com/user-attachments/assets/f687a33e-3185-4ca8-b85b-ed0d655816db" />
 
@@ -101,13 +102,13 @@ Tämän jälkeen ajoin komennon `micro ~/public_html/index.html` ja vaihdoin tek
 <img width="221" height="146" alt="image" src="https://github.com/user-attachments/assets/c5b5ec18-097c-4534-8dfb-26743f11d886" />
 
 ## b) Nginx asennus käsin
-Tämän tehtävän suoritukseen käytin apuna aiemmassa tehtävässä oppimiani asioita,  Karvisen 2008 Install Apache Web Server on Ubuntu ja ChatGPT -tekoälyä, joka käytti lähteinään Nginx Beginner's Guide ja Ubuntu Server How to configure Nginx.
+Tämän tehtävän suoritukseen käytin apuna aiemmassa tehtävässä oppimiani asioita,  Karvisen 2008 Install Apache Web Server on Ubuntu, Karvisen H3 Demoni vinkit kohtaa ja ChatGPT -tekoälyä, joka käytti lähteinään Nginx Beginner's Guide ja Ubuntu Server How to configure Nginx.
 
 Ennen kuin pystyin ladata Nginx piti sammuttaa Apache 2. Tein tämän komennolla `sudo systemctl stop apache2` ja sen jälkeen tarkistin sammuiko se komennolla `systemctl is-active apache2`, joka antoi vastaukseksi inactive eli se oli poissa päältä.
 
 <img width="236" height="59" alt="image" src="https://github.com/user-attachments/assets/38ab64f3-963a-4039-8d13-3873da243ec7" />
 
-Seuraavaksi päivitin pakettiluettelon komennolla `sudo apt-get update` ja latasin nginx komenolla `sudo apt-get install nginx`.
+Seuraavaksi päivitin pakettiluettelon komennolla `sudo apt-get update` ja latasin nginx komennolla `sudo apt-get install nginx`.
 
 <img width="470" height="400" alt="image" src="https://github.com/user-attachments/assets/2ce1916f-8c25-4032-a795-9d283094c4f8" />
 
@@ -140,19 +141,48 @@ Sitten menin muokkaamaan index.html koodia komennolla `micro ~/public_html/index
 <img width="302" height="131" alt="image" src="https://github.com/user-attachments/assets/c00d23e1-a159-41a3-9d12-d94c7a741d5b" />
 
 ## c) Automaattinen Nginx asennus Ansiblella
-Tämän tehtävän suoritukseen käytin apuna Karvisen 2026 Apache Installed with Ansible - quick notes artikkelia.
+Tämän tehtävän suoritukseen käytin apuna Karvisen 2026 Apache Installed with Ansible - quick notes artikkelia ja ChatGPT -tekoälyä virheen selvityksessä, joka käytti lähteinään Nginx Beginner's Guide ja Ubuntu Server How to configure Nginx.
 
 Aluksi menin ansible hakemistoon komennolla `cd ansible` ja vielä `cd roles`. Sitten loin kolme uutta roolia komennoilla `mkdir -p nginx/files`, `mkdir -p nginx/handlers` ja `mkdir -p nginx/tasks`. Tämän jälkeen puu näytti tältä:
 
 <img width="284" height="247" alt="image" src="https://github.com/user-attachments/assets/d0ad0ef0-8cb0-4e6e-919b-f2d7da11e359" />
 
 Seuraavaksi loin tasks hakemistoon main.yml tiedoston, johon lisäsin koodia. Tein tämän komennolla `micro roles/nginx/tasks/main.yml`.
+```yaml
+- apt:
+   name: nginx
+   state: present
+
+- copy:
+    dest: "/etc/nginx/sites-available/example.com.conf"
+    src: "example.com.conf"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  notify: restart nginx
+
+- file:
+    src: /etc/nginx/sites-available/example.com.conf
+    dest: /etc/nginx/sites-enabled/example.com.conf
+    owner: root
+    group: root
+    state: link
+  notify: restart nginx
+```
+Tässä koodissa annetaan paketille nginx nimi, copy kohta kopioi asetustiedostot oikeaan kansioon, file luo linkin sites-available ja sites-enabled välillä ja notify ilmoittaa seuraavaksi luomalleni handlerille, että pitää restartata mikäli muutoksia tehdään.
 
 <img width="295" height="203" alt="image" src="https://github.com/user-attachments/assets/c9b8dcbf-cbf3-40e2-921f-befacff1c4b0" />
 
 <img width="297" height="209" alt="image" src="https://github.com/user-attachments/assets/63f33769-af6b-4a5f-9700-b9b5c6f57cde" />
 
 Seuraavaksi loin handlers hakemistolle main.yml tiedoston komennolla `micro roles/handlers/main.yml`. Sinne lisäsin seuraavan koodin:
+```yaml
+- name: restart nginx
+  systemd:
+     name: nginx
+     state: restarted
+```
+Tässä koodissa annetaan handlerille nimeksi restart nginx ja määritetään, että se restarttaa nginx palvelun uudelleen pyydettäessä.
 
 <img width="148" height="58" alt="image" src="https://github.com/user-attachments/assets/5dd432f7-33e3-41b7-9385-8284c9161b62" />
 
@@ -162,10 +192,23 @@ Sitten loin files hakemistolle aiemmin mainitsemani example.com.conf tiedoston k
 
 <img width="198" height="57" alt="image" src="https://github.com/user-attachments/assets/1fbbb579-f10f-4297-ba5b-1b994aee20a9" />
 
-
 <img width="410" height="174" alt="image" src="https://github.com/user-attachments/assets/0a73fd72-a549-4910-ba67-9840f38858b1" />
 
 Sitten lisäsin seuraavaan koodin example.com.conf tiedostoon:
+```yaml
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        root /home/jemima/public_html;
+        index index.html;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+```
+Tässä koodissa asetin 80 portin oletuspalvelimen portiksi, root kohdassa on polku, josta nettisivut löytyvät ja location etsii asettamiani tiedostoja.
 
 <img width="328" height="127" alt="image" src="https://github.com/user-attachments/assets/13a48ac5-dc8d-42ef-8f75-f47481914983" />
 
@@ -181,7 +224,7 @@ Menin muokkaamaan nimettyä polkua `- name` kohtaa. Koodi näytti oikealta, mutt
 
 <img width="814" height="407" alt="image" src="https://github.com/user-attachments/assets/d06482e8-e5a6-4a9d-8110-f57450f27b63" />
 
-Sivusto kuitenkin ei näyttänyt index.html enään, joten jokin oli pielessä. Ajoin komennon `sudo systemctl status nginx` ja se näytti failed eli jokin oli pielessä.
+Sivusto kuitenkin ei näyttänyt index.html enään, joten jokin oli pielessä. Tässä kohdassa pyysin ChatGPT -tekoälyltä apua ja se käytti lähteinään Nginx Beginner's Guide ja Ubuntu Server How to configure Nginx. Ajoin komennon `sudo systemctl status nginx` ja se näytti failed eli jokin oli pielessä.
 
 <img width="469" height="229" alt="image" src="https://github.com/user-attachments/assets/1d1dc37c-2199-4e9e-952c-6f72ff314593" />
 
