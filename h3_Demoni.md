@@ -32,7 +32,7 @@
 * Versio toi myös mm. vahvistetun tietoturva järjestelmän, mahdollisuuden jakaa ylläpitotehtäviä tarkemmin ja Web UI overhaul uudistuksen, joka muutti mm. navigaatiota ja lisäsi URL reitityksen.
 
 ## a) Apassi
-Tämän tehtävän suoritukseen käytin apuna Karvisen 2026 Apache installed with Ansible - quick notes artikkelia.
+Tämän tehtävän suoritukseen käytin apuna Karvisen 2026 Apache installed with Ansible - quick notes artikkelia, Karvisen 2008 Install Apache Web Server on Ubuntu ja ChatGPT -tekoälyä.
 
 Ensiksi asensin Apache2 komennolla `sudo apt-get install apache2`. Asennuksessa kesti hetki.
 
@@ -56,7 +56,7 @@ Selaimeen kirjoitin http://localhost/~jemima/ ja aukesi seuraavanlainen sivu:
 
 <img width="206" height="128" alt="image" src="https://github.com/user-attachments/assets/84a60795-fbbd-4042-bb9c-890f6fa3cae6" />
 
-Tämä tarkoitti, että oikeudet oli asetettu väärin käyttäjille. Seuraavissa kohdissa pyysin apua ChatGPT -tekoälyltä, sillä en ollenkaan tiennyt miten edetä tehtävässä. Se käytti lähteinä vastauksilleen Apache HTTP Server Documentation - mod_userdir, Apache HTTP Server Documentation - Authorization ja Ubuntu Server Documentation - Apache2 (2026).
+Tämä tarkoitti, että oikeudet oli asetettu väärin käyttäjille. Tehtävän loppusuorituksessa pyysin apua ChatGPT -tekoälyltä, sillä en ollenkaan tiennyt miten edetä tehtävässä. Se käytti lähteinä vastauksilleen Apache HTTP Server Documentation - mod_userdir, Apache HTTP Server Documentation - Authorization ja Ubuntu Server Documentation - Apache2 (2026).
 
 Ajoin komennot `ls -ld ~` ja `ls -ld ~/public_html`, jotta näyttivät, mitkä oikeudet kotihakemistossa sekä public_html olivat.
 
@@ -100,7 +100,8 @@ Tämän jälkeen ajoin komennon `micro ~/public_html/index.html` ja vaihdoin tek
 
 <img width="221" height="146" alt="image" src="https://github.com/user-attachments/assets/c5b5ec18-097c-4534-8dfb-26743f11d886" />
 
-
+## b) Moottorix
+Ennen kuin pystyin ladata Nginx 
 
 
 
