@@ -171,4 +171,31 @@ Seuraavaksi menin site.yml tiedostoon lisäämään rooleihin nginx roolin, jott
 
 <img width="123" height="68" alt="image" src="https://github.com/user-attachments/assets/14084adf-3413-4224-b8e5-b0d30a1a653c" />
 
+Sitten ajoin komennon `ansible-playbook site.yml -K` ja sain seuraavan virheilmoituksen:
+
+<img width="943" height="142" alt="image" src="https://github.com/user-attachments/assets/97b296b2-3526-45dd-bf95-9aa7aded85ce" />
+
+Menin muokkaamaan nimettyä polkua `- name` kohtaa. Koodi näytti oikealta, mutta varmuuden vuoksi kumitin pois viivan ja laitoin sen uudelleen. Tämän jälkeen tallensin ja ajoin `ansible-playbook site.yml -K` uudelleen ja tulos oli kaikki ok.
+
+<img width="814" height="407" alt="image" src="https://github.com/user-attachments/assets/d06482e8-e5a6-4a9d-8110-f57450f27b63" />
+
+Sivusto kuitenkin ei näyttänyt index.html enään, joten jokin oli pielessä. Ajoin komennon `sudo systemctl status nginx` ja se näytti failed eli jokin oli pielessä.
+
+<img width="469" height="229" alt="image" src="https://github.com/user-attachments/assets/1d1dc37c-2199-4e9e-952c-6f72ff314593" />
+
+Tarkistin tilanteen komennolla `sudo nginx -t`. Ilmeisesti ongelma oli siinä, että oli duplikaatio default serveristä, joka piti nyt poistaa.
+
+<img width="470" height="71" alt="image" src="https://github.com/user-attachments/assets/b1d3cb09-6fc0-408b-9124-39d7eb6a68da" />
+
+Poistin sen komennolla `sudo rm /etc/nginx/sites-enabled/default` ja sitten ajoin uudelleen `sudo nginx -t`, joka sanoi, että test is successful. Sitten vielä restarttasin nginxin komennolla `sudo systemctl restart nginx`.
+
+<img width="338" height="143" alt="image" src="https://github.com/user-attachments/assets/7b9ed321-6467-4d73-aa67-40a5d8d5ed2f" />
+
+Nyt index.html sivusto tuli jälleen näkyviin. Testasin myös vielä ihan lopuksi ajaa uudelleen `ansible-playbook site.yml -K` ja se näytti kaikki ok.
+
+<img width="266" height="98" alt="image" src="https://github.com/user-attachments/assets/7b52d3b8-1274-454c-b850-f199ddd253b7" />
+
+<img width="782" height="408" alt="image" src="https://github.com/user-attachments/assets/c2cb11cc-7790-4eab-8658-7a0ffd44c831" />
+
+
 
