@@ -34,43 +34,50 @@
 ## a) Apassi
 Tämän tehtävän suoritukseen käytin apuna Karvisen 2026 Apache installed with Ansible - quick notes artikkelia.
 
-Ensiksi päivitin pakettiluettelon komennolla `sudo apt-get update`. Tämän jälkeen asensin Apache2 komennolla `sudo apt-get install apache2`. Asennuksessa kesti hetki.
+Ensiksi asensin Apache2 komennolla `sudo apt-get install apache2`. Asennuksessa kesti hetki.
 
 <img width="470" height="305" alt="image" src="https://github.com/user-attachments/assets/acc3ee30-d414-438d-9d46-921a7bbb7dd7" />
 
-Tämän jälkeen menin komennolla `cd ansible` muokkaamaan ansiblen tiedostoja. Loin komennolla `mkdir -p /roles/apache2/files` uuden roolin apache2 ja sille alikansion files. Samalla tavalla loin vielä kaksi muuta hakemistoa apache2 roolille: `mkdir -p roles/apache2/handlers/` ja `mkdir -p roles/apache2/tasks`.
+Tämän jälkeen menin selaimessa osoitteeseen http//:localhost ja näin onnistuneesti Apachen sivut.
 
-<img width="278" height="10" alt="image" src="https://github.com/user-attachments/assets/198bcea5-e7d3-4291-a2ca-6e5a9ee92533" />
+<img width="422" height="269" alt="image" src="https://github.com/user-attachments/assets/97a24599-f1cb-4591-9b82-a12faaa08aac" />
 
-<img width="292" height="20" alt="image" src="https://github.com/user-attachments/assets/9efb0e89-1705-4fd2-8819-907b44155859" />
+Seuraavaksi otin käyttäjien kotisivut käyttöön komennolla `sudo a2enmod userdir`. Jotta se menisi päälle ajoin komennon `sudo systemctl restart apache2`.
 
-Nyt puuni näytti seuraavan laiselta:
+<img width="192" height="12" alt="image" src="https://github.com/user-attachments/assets/82a6f007-38bc-4859-a843-5f471636d633" />
 
-<img width="177" height="185" alt="image" src="https://github.com/user-attachments/assets/ca6ecefa-7073-45dd-8e29-e2a08f35c9f1" />
+<img width="243" height="11" alt="image" src="https://github.com/user-attachments/assets/2774bbbd-1072-4823-9de6-f47b1a5c2631" />
 
-Käytin micro tekstieditoria luomaan main.yml tiedoston tasks hakemistoon, johon tulisi tehtävät, jotka haluan, että apache2 suorittaa. Tämän tein komennolla `micro roles/apache2/tasks/main.yml` ja pääsin muokkamaan main.yml tiedostoa. Sinne kirjoitin seuraavat tiedot:
+Tämän jälkeen testasin luoda public_html sivuston normaalina käyttäjänä. Menin kotihakemistooni ensin komennolla `cd` ja sitten loin public_hmtl hakemiston komennolla `mkdir public_html`. Tarkistin nimeni komennolla `whoami`, jotta voisin sitten asettaa sen selaimeen.
 
-<img width="307" height="197" alt="image" src="https://github.com/user-attachments/assets/ccde5584-76b0-4bf5-ad99-1a7c9d89aa7b" />
+<img width="179" height="55" alt="image" src="https://github.com/user-attachments/assets/290e7d63-e225-427f-a58f-1a08af0bde85" />
 
-Katsoin vielä että ne tallentuivat komennolla `cat roles/apache2/tasks/main.yml`
+Selaimeen kirjoitin http://localhost/~jemima/ ja aukesi seuraavanlainen sivu:
 
-<img width="303" height="212" alt="image" src="https://github.com/user-attachments/assets/e212e054-8aaf-4b01-928f-97473e518b65" />
+<img width="206" height="128" alt="image" src="https://github.com/user-attachments/assets/84a60795-fbbd-4042-bb9c-890f6fa3cae6" />
 
-Seuraavaksi menin muokkaamaan handlers hakemistoa ja lisäsin sinnekin main.yml tiedoston komennolla `micro roles/apache2/handlers/main.yml`. Sinne lisäsin seuraavat tiedot: 
+Tämä tarkoitti, että oikeudet oli asetettu väärin käyttäjille. Tässä kohdassa pyysin apua ChatGPT -tekoälyltä, sillä en ollenkaan tiennyt miten edetä tehtävässä. Se käytti lähteinä vastauksilleen Apache HTTP Server Documentation - mod_userdir, Apache HTTP Server Documentation - Authorization ja Ubuntu Server Documentation - Apache2 (2026).
 
-<img width="133" height="45" alt="image" src="https://github.com/user-attachments/assets/59d4ae0d-97a8-4690-b782-6447701f952f" />
+Ajoin komennot `ls -ld ~` ja `ls -ld ~/public_html`, jotta näyttivät, mitkä oikeudet kotihakemistossa sekä public_html olivat.
 
-Jälleen tarkistin, että tiedot tallentuivat komennolla `cat roles/apache2/handlers/main.yml`.
+<img width="352" height="54" alt="image" src="https://github.com/user-attachments/assets/40fae096-d9a2-40c4-9954-e71b08b95f56" />
 
-<img width="323" height="71" alt="image" src="https://github.com/user-attachments/assets/be79f49b-d6a3-4245-8583-f7a4f9c232ee" />
+Ajoin komennon `chmod 711 ~`, joka muutti kotihakemiston oikeudet niin että omistajalla on luku, kirjoitus ja suoritusoikeudet ja ryhmällä ja muilla on suoritusoikeus. Ajoin sitten komennon `chmod 755 ~/public_html`, joka muutti public_html omistajan oikeudet luku, kirjoitus ja suoritusoikeudet ja ryhmälle ja muille luku sekä suoritusoikeudet.
 
-Viimeisenä vielä loin files hakemistolle example.com.conf tiedoston komennolla `micro roles/apache2/files/example.com.conf`. Sinne lisäsin seuraavat tiedot:
+<img width="352" height="68" alt="image" src="https://github.com/user-attachments/assets/a427e702-7e88-4d30-8745-8d7812a33e29" />
 
-<img width="245" height="80" alt="image" src="https://github.com/user-attachments/assets/cbf13898-2509-445f-8bee-5d4a9e020db0" />
+Nyt sivusto näkyi oikeanlaisena:
 
-Jälleen tarkistin, että tiedostot tallentuivat komennolla `cat roles/apache2/files/example.com.conf`
+<img width="245" height="161" alt="image" src="https://github.com/user-attachments/assets/a2cc815e-1967-49fe-a504-725d179ebeb0" />
 
-<img width="349" height="112" alt="image" src="https://github.com/user-attachments/assets/e2853696-1c87-4aae-b220-c79b26663df0" />
+
+
+
+
+
+
+
+
 
 
 
