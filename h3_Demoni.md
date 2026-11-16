@@ -56,7 +56,7 @@ Selaimeen kirjoitin http://localhost/~jemima/ ja aukesi seuraavanlainen sivu:
 
 <img width="206" height="128" alt="image" src="https://github.com/user-attachments/assets/84a60795-fbbd-4042-bb9c-890f6fa3cae6" />
 
-Tämä tarkoitti, että oikeudet oli asetettu väärin käyttäjille. Tässä kohdassa pyysin apua ChatGPT -tekoälyltä, sillä en ollenkaan tiennyt miten edetä tehtävässä. Se käytti lähteinä vastauksilleen Apache HTTP Server Documentation - mod_userdir, Apache HTTP Server Documentation - Authorization ja Ubuntu Server Documentation - Apache2 (2026).
+Tämä tarkoitti, että oikeudet oli asetettu väärin käyttäjille. Seuraavissa kohdissa pyysin apua ChatGPT -tekoälyltä, sillä en ollenkaan tiennyt miten edetä tehtävässä. Se käytti lähteinä vastauksilleen Apache HTTP Server Documentation - mod_userdir, Apache HTTP Server Documentation - Authorization ja Ubuntu Server Documentation - Apache2 (2026).
 
 Ajoin komennot `ls -ld ~` ja `ls -ld ~/public_html`, jotta näyttivät, mitkä oikeudet kotihakemistossa sekä public_html olivat.
 
@@ -66,18 +66,39 @@ Ajoin komennon `chmod 711 ~`, joka muutti kotihakemiston oikeudet niin että omi
 
 <img width="352" height="68" alt="image" src="https://github.com/user-attachments/assets/a427e702-7e88-4d30-8745-8d7812a33e29" />
 
-Nyt sivusto näkyi oikeanlaisena:
+Nyt käyttäjäsivusto näkyi oikeanlaisena:
 
 <img width="245" height="161" alt="image" src="https://github.com/user-attachments/assets/a2cc815e-1967-49fe-a504-725d179ebeb0" />
 
+Seuraavaksi piti tehdä niin, että sivusto näkyisi http://localhost osoitteessa. Aluksi loin index.html `micro ~/index.html` tiedoston jonne laitoin html koodia, joka näkyisi sitten nettisivun etusivuilla.
 
+<img width="173" height="99" alt="image" src="https://github.com/user-attachments/assets/69e5e275-36d1-48f2-afe9-ae2851bb30cc" />
 
+Nyt kun olin luonut koodin, jota pystyn muokata ilman sudoa, piti mennä muokkaamaan apache2 asetuksia. Ajoin komennon `sudo micro /etc/apache2/sites-available/000-default.conf`. Siellä vaihdoin DocumentRoot kohtaan /home/jemima/public_html polun ja lisäsin sen alapuolelle:
 
+```yaml
+<Directory /home/jemima/public_html>
+    Require all granted
+</Directory>
+```
 
+<img width="413" height="329" alt="image" src="https://github.com/user-attachments/assets/52de0337-245b-4823-9c96-7498636443e0" />
 
+Sitten ajoin komennon `sudo apache2ctl configtest`, joka tarkisti oliko asetuksissa mitään kirjoitusvirheitä. Syntax OK viesti tarkoittaa, että kaikki oli kunnossa. Tämän jälkeen käynnistin apache2 uudelleen komennolla `sudo systemctl restart apache2`. Tässä vaiheessa sivustolla ei vielä näkynyt index.html tiedostoani, sillä olin vahingossa luonut sen kotihakemistooni enkä public_html hakemistoon. Joten siirsin sen sinne komennolla `mv ~/index_html ~/public_html/index_html`
 
+<img width="305" height="48" alt="image" src="https://github.com/user-attachments/assets/f687a33e-3185-4ca8-b85b-ed0d655816db" />
 
+Nyt kun menin http://localhost sivustolle index.html kirjoittamani tiedot tulivat sivulla viimein esille.
 
+<img width="454" height="384" alt="image" src="https://github.com/user-attachments/assets/ce09e20e-1c0c-41a6-b006-28c29a2df93e" />
+
+Testasin vielä, että normaali käyttäjä pystyy muokkaamaan index.html ilman sudo oikeuksia. Tein testin ensiksi katsomalla, että olen normaali käyttäjä komennolla whoami.
+
+<img width="122" height="35" alt="image" src="https://github.com/user-attachments/assets/fc0d349f-a96c-4804-b6ad-cc468892f9f3" />
+
+Tämän jälkeen ajoin komennon `micro ~/public_html/index.html` ja vaihdoin tekstiä. Sitten tallensin ja menin katsomaan tuliko muutos nettisivuille. Muutos tuli näkyviin, joten tehtävä onnistui.
+
+<img width="221" height="146" alt="image" src="https://github.com/user-attachments/assets/c5b5ec18-097c-4534-8dfb-26743f11d886" />
 
 
 
