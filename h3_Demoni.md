@@ -24,5 +24,14 @@
     name: httpd
     state: started
 ```
-## y) 
+## y) Bor - Open-source policy management for Linux desktops
+* Bor on avoimen lähdekoodin järjestelmä tarkoitettu Linux-työasemien keskitettyyn hallintaan.
+* Bor koostuu kevyestä Go agentista ja keskitetystä palvelimesta.
+* Käytännöt välitetään suoratoistona clienteille reaaliajassa.
+* Versio 0.8.0 lisäsi kolme uutta käytäntötyyppiä: Thunderbird, Microsoft Edge for Business ja Firewalld zones.
+* Versio toi myös mm. vahvistetun tietoturva järjestelmän, mahdollisuuden jakaa ylläpitotehtäviä tarkemmin ja Web UI overhaul uudistuksen, joka muutti mm. navigaatiota ja lisäsi URL reitityksen.
+
+
+
+
 
