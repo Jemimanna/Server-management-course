@@ -13,4 +13,16 @@
 * `handlers` osiossa määritellään handlerien nimet ja tehtävät.
 * Handleri suorittaa uudelleenkäynnistyksen vain kerran, vaikka samasta muutoksesta olisi ilmoitettu sille monta kertaa.
 ### Ansible-doc service
+* Hallitsee palveluita etäkoneilla.
+* `enabled` määritetään pitääkö palvelun käynnistyä bootin yhteydessä.
+* `name` palvelun nimi.
+* `state` määrittää palvelun tilan esim. `started`, `stopped`, `reloaded`, `restarted`.
+* EXAMPLES: Käynnistää httpd palvelun, mikäli sitä ei ole jo käynnistetty (state: started).
+```yaml
+- name: Start service httpd, if not started
+  ansible.builtin.service:
+    name: httpd
+    state: started
+```
+## y) 
 
