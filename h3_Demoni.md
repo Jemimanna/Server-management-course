@@ -8,4 +8,9 @@
 * `handlers/main.yml` uudelleenkäynnistys suoritetut palvelut.
 * `files/example.com.conf` hallinnoitu tiedosto, jossa tehdyt muutokset ylikirjoitetaan.
 ### Ansible Community Documentation: Handlers: running operations on change
-* 
+* Handlerit ovat tehtäviä, jotka suoritetaan, kun tehdystä muutoksesta on ilmoitettu niille.
+* `notify` käytetään ilmoittamaan nimetyille handlereille tehtävässä tapahtuneesta muutoksesta.
+* `handlers` osiossa määritellään handlerien nimet ja tehtävät.
+* Handleri suorittaa uudelleenkäynnistyksen vain kerran, vaikka samasta muutoksesta olisi ilmoitettu sille monta kertaa.
+### Ansible-doc service
+
