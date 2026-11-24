@@ -23,3 +23,16 @@
 ### Omat huomiot
 * Yksinkertaiset ns. ydin toiminnot helpottavat muiden funktioiden idempotenttisuuden toteuttamista.
 * Tämä vähentää työmäärää idempotenttisuuden toteuttamisessa.
+
+## a) Caddy demonin asennus
+Aluksi päivitin pakettiluettelon komennolla `sudo apt-get update`, jonka jälkeen latasin Caddyn komennolla `sudo apt-get install caddy`.
+
+<img width="476" height="399" alt="image" src="https://github.com/user-attachments/assets/4aee6b55-3544-4fe8-8866-a495ecffa413" />
+
+
+
+
+
+
+
+
