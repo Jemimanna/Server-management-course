@@ -82,6 +82,10 @@ Tarkistin vielä komennolla `cat roles/caddy/tasks/main.yml`, että koodi oli ta
 
 <img width="296" height="134" alt="image" src="https://github.com/user-attachments/assets/6caaad99-df87-4304-bc85-fe1cf1e2cf79" />
 
+Seuraavaksi minun piti lisätä caddy rooli site.yml kansioon. Ajoin komennon `micro site.yml` ja lisäsin roles kohtaan caddy roolin.
+
+<img width="107" height="71" alt="image" src="https://github.com/user-attachments/assets/f9d76e3e-59b6-4840-870a-4103b0383dd8" />
+
 Seuraavaksi testatakseni, että koodi käynnistää caddyn, pistin sen ensiksi pois päältä komennolla `sudo systemctl stop caddy` ja tarkistin, että se oikeasti meni pois komennolla `systemctl is-active caddy`. Vastaus oli inactive eli nyt se oli poissa päältä.
 
 <img width="268" height="109" alt="image" src="https://github.com/user-attachments/assets/2161c535-620f-4ba9-ac6a-acb2c44fbe6f" />
