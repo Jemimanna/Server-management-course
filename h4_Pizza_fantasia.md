@@ -90,11 +90,97 @@ Seuraavaksi testatakseni, että koodi käynnistää caddyn, pistin sen ensiksi p
 
 <img width="268" height="109" alt="image" src="https://github.com/user-attachments/assets/2161c535-620f-4ba9-ac6a-acb2c44fbe6f" />
 
-Tämän jälkeen ajoin playbookin komennolla ``
+Tämän jälkeen ajoin playbookin komennolla `ansible-playbook site.yml -K`. En saanut virheilmoitusta ja tuli ilmoitus changed=2.
+
+<img width="305" height="35" alt="image" src="https://github.com/user-attachments/assets/c13e9224-9e7a-448a-945b-7887a82604a1" />
 
 
+<img width="476" height="206" alt="image" src="https://github.com/user-attachments/assets/53770b7d-d4c5-4f83-8868-0d5a21394ab0" />
 
+Nyt kun ajoin `systemctl is-active caddy` sain vastaukseksi active eli automaattinen käynnistys ansiblella onnistui.
 
+<img width="267" height="43" alt="image" src="https://github.com/user-attachments/assets/1756ccf5-8b8f-422c-acff-0dce94134ccb" />
 
+Ajoin vielä kerran `ansible-playbook site.yml -K` tarkistaakseni, että nyt muutoksia ei tehtäisi, sillä caddy oli jo päällä. Vastaus oli ok=14 ja muut nollaa eli se toimi oikein.
 
+<img width="476" height="205" alt="image" src="https://github.com/user-attachments/assets/874005db-4095-4c30-836e-80d45cfa6abe" />
 
+## c) Asetustiedostojen muutos
+Loin aluksi caddylle file hakemiston komennolla `mkdir -p roles/caddy/files` ja sinne `micro roles/caddy/files/asetus`, johon kirjoittaisin uudet tiedot. Kirjoitin sinne:
+```yaml
+:80 {
+    respond "Uusi asetus toimii"
+}
+```
+<img width="194" height="35" alt="image" src="https://github.com/user-attachments/assets/05870311-a1e4-4a08-a73f-fd17c85c48c3" />
+
+Tämän jälkeen uusi asetus piti lisätä suoritettavaksi main.yml sisälle. Menin siis sinne komennolla `micro roles/caddy/tasks/main.yml`. Lisäsin sinne:
+```yaml
+- name: Caddy kopio
+  copy:
+    src: asetus
+    dest: /etc/caddy/Caddyfile
+```
+Tässä koodissa copy vie uuden asetuksen caddylle src -> dest. Eli tekemäni `asetus` siirtyy `/etc/caddy/Caddyfile` sijaintiin. Muutin myös caddy käynnistys kohdan state kohdan restarted eli, että se käynnistää caddyn uudelleen.
+
+<img width="192" height="155" alt="image" src="https://github.com/user-attachments/assets/dd54e870-29c1-4c60-b4bf-dfa45925bfc5" />
+
+Sitten ajoin playbookin komennolla `ansible-playbook site.yml -K` ja sain vastaukseksi changed=2.
+
+<img width="469" height="232" alt="image" src="https://github.com/user-attachments/assets/4f21a73c-be74-4bbb-bced-0d516688135f" />
+
+Sitten ajoin komennon `cat /etc/caddy/Caddyfile`, johon nyt oli tullut asetus tiedostoon laittamani teksti. Tämä osoitti, että tiedoston tiedot oli kopioitu oikeaan osoitteeseen.
+
+<img width="257" height="53" alt="image" src="https://github.com/user-attachments/assets/45d36db1-f105-45ea-a04d-2f2c1038523a" />
+
+Seuraavaksi restarttasin caddyn komennolla `sudo systemctl restart caddy` ja testasin tulisiko laittamani teksti nyt näkyviin curlin avulla. Tein tämän komennolla `curl http://localhost` ja sain laittamani respond tekstin vastauksena.
+
+<img width="254" height="26" alt="image" src="https://github.com/user-attachments/assets/2f170cd3-b5a4-42c8-be41-56d902afc947" />
+
+Myös nyt kun menin selaimessa sivustolle, näkyviin tuli laittamani teksti.
+
+<img width="182" height="73" alt="image" src="https://github.com/user-attachments/assets/de5994b8-625d-4d7a-9326-d3f29f3c748c" />
+
+## d) Asetusten rikkominen ja korjaus ansiblella
+Päätin poistaa aiemmassa tehtävässä käyttämäni asetustiedoston Caddyfile. Aluksi tarkistin, että se näkyy komennolla `ls /etc/caddy`.
+
+<img width="214" height="50" alt="image" src="https://github.com/user-attachments/assets/341bee6c-10c2-4a9c-88a6-fd2e80fceda0" />
+
+Seuraavaksi poistin sen komennolla `sudo rm /etc/caddy/Caddyfile`.
+
+<img width="273" height="77" alt="image" src="https://github.com/user-attachments/assets/dc027d89-d0a6-464d-b5b5-9e0c201559de" />
+
+Tässä vaiheessa huomasin, että main.yml tiedostossani täytyi vaihtaa kopioinnin ja käynnistyksen paikat, jotta kopiointi suoritettaisiin ennen käynnistämistä. Muutin siis niiden paikat.
+
+<img width="175" height="151" alt="image" src="https://github.com/user-attachments/assets/eab1278e-e82e-44d9-a892-07e663c48162" />
+
+Seuraavaksi ajoin `ansible-playbook site.yml -K` nähdäkseni kopioiko se Caddyfilen uudelleen ja korjaa virheen. Kuvassa näkyy, että kopiointi suoritetaan ensin ja siinä tulee changed.
+
+<img width="449" height="206" alt="image" src="https://github.com/user-attachments/assets/3d87b16d-56d1-403f-ae38-b4a0b5d93587" />
+
+Nyt kun ajoin `ls /etc/caddy` Caddyfile oli jälleen siellä.
+
+<img width="210" height="47" alt="image" src="https://github.com/user-attachments/assets/27e99e5a-fec7-4549-a4b7-4380362d5900" />
+
+Myös curl ja nettisivu toimivat.
+
+<img width="239" height="26" alt="image" src="https://github.com/user-attachments/assets/7b9cf81b-662f-4e06-8973-694ef0abfe80" />
+
+<img width="170" height="67" alt="image" src="https://github.com/user-attachments/assets/f11283b6-0a2a-4100-9f6a-ce00e63f907c" />
+
+## e) Idempotenttisuus
+Viime tehtävän kuvassa näkyy changed=2, joka tarkoittaa, että kahta asiaa muutettiin playbookin suorituksessa. Todistaakseni idempotenttisuuden, että muutoksia ei tehdä, mikäli järjestelmä on jo halutussa tilassa, ajoin playbookin uudestaan. Sain changed=1 kohdassa käynnistys, sillä olin asettanut restarted komennon tapahtumaan jokaisella kerralla.
+
+<img width="400" height="238" alt="image" src="https://github.com/user-attachments/assets/0f3b60f6-b614-4a57-9ccd-3bee62c74e43" />
+
+Korjatakseni tämän menin muokkaamaan main.yml ja vaihdoin restarted kohdan takaisin started.
+
+<img width="134" height="61" alt="image" src="https://github.com/user-attachments/assets/af3db6c1-f868-4d7b-a0d6-cb1e1c288bbf" />
+
+Sitten ajoin playbookin ja sain vastaukseksi ok=15 ja muut nollaa. Ajoin sen vielä kerran varmuuden vuoksi ja vastaus oli edelleen ok=15 muut nollaa. Idempotenttisuus siis toteutui.
+
+<img width="788" height="403" alt="image" src="https://github.com/user-attachments/assets/775c91b3-ed53-4a2e-a204-f0d689126b48" />
+
+## f) Pari hankittu: Sofia Rinne
+
+## Lähteet
