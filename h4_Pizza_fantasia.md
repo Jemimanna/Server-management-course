@@ -62,9 +62,31 @@ Etsin `ansible-doc apt` sisällöstä esimerkkejä ja käytin myös apuna H3 teh
 
 Seuraavaksi loin caddylle main.yml tiedoston, johon itse koodi tulisi. Tein tämän komennolla `micro roles/caddy/tasks/main.yml`.
 
+Asetin main.yml seuraavat tiedot:
+```yaml
+- name: Caddy lataus
+  apt:
+    name: caddy
+    state: present
 
+- name: Caddy käynnistys
+  systemd:
+     name: caddy
+     state: started
+     enabled: yes
+```
 
+<img width="150" height="121" alt="image" src="https://github.com/user-attachments/assets/355d5cc4-bf34-4df1-a0a2-34f6ce54fe78" />
 
+Tarkistin vielä komennolla `cat roles/caddy/tasks/main.yml`, että koodi oli tallentunut.
+
+<img width="296" height="134" alt="image" src="https://github.com/user-attachments/assets/6caaad99-df87-4304-bc85-fe1cf1e2cf79" />
+
+Seuraavaksi testatakseni, että koodi käynnistää caddyn, pistin sen ensiksi pois päältä komennolla `sudo systemctl stop caddy` ja tarkistin, että se oikeasti meni pois komennolla `systemctl is-active caddy`. Vastaus oli inactive eli nyt se oli poissa päältä.
+
+<img width="268" height="109" alt="image" src="https://github.com/user-attachments/assets/2161c535-620f-4ba9-ac6a-acb2c44fbe6f" />
+
+Tämän jälkeen ajoin playbookin komennolla ``
 
 
 
