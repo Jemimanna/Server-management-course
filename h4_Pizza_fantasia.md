@@ -29,6 +29,42 @@ Aluksi päivitin pakettiluettelon komennolla `sudo apt-get update`, jonka jälke
 
 <img width="476" height="399" alt="image" src="https://github.com/user-attachments/assets/4aee6b55-3544-4fe8-8866-a495ecffa413" />
 
+Seuraavaksi laitoin pois päältä apache2 ja nginx komennoilla `sudo systemctl stop apache2` ja `sudo systemctl stop nginx`. Tämä pysäytti ne. 
+
+<img width="232" height="93" alt="image" src="https://github.com/user-attachments/assets/8ceaf16a-5ec4-4b67-a01f-34aabd5247c2" />
+
+Tämän jälkeen ajoin vielä `sudo systemctl disable apache2` ja `sudo systemctl disable nginx`, jotka estivät niiden automaattisen käynnistymisen kun kone käynnistyy.
+
+<img width="470" height="109" alt="image" src="https://github.com/user-attachments/assets/f0ea850b-68af-449d-bf84-fb19fa9ffdff" />
+
+Tarkistin olivatko ne päällä komennoilla `sudo systemctl status apache2` ja `sudo systemctl status nginx`. Tulokseksi sain inactive ja failed eli ne olivat poissa päältä. En ollut varma, mitä nginxin vastaus failed tarkoitti. Ne pitivät laittaa pois päältä, jotta Caddy pystyisi käyttämään porttia 80.
+
+<img width="469" height="204" alt="image" src="https://github.com/user-attachments/assets/f25319bf-9907-412c-966e-238032ba75f5" />
+
+<img width="475" height="221" alt="image" src="https://github.com/user-attachments/assets/0d729869-73fa-4e32-bfc4-e8aa669cbfe2" />
+
+Seuraavaksi laitoin caddyn päälle komennolla `sudo systemctl enable --now caddy` ja tarkistin, että se meni päälle komennolla `sudo systemctl status caddy`. Sain vastauksen active eli se oli päällä.
+
+<img width="466" height="296" alt="image" src="https://github.com/user-attachments/assets/a8aa0b21-b69c-49d8-b62c-d214355bf9ae" />
+
+Seuraavaksi menin tarkistamaan, että caddy oikeasti toimi menemällä selaimeen. Siellä kirjoitin osoiteriville http://localhost ja sain caddyn sivut esiin. Tämä osoitti, että asennus onnistui.
+
+<img width="480" height="423" alt="image" src="https://github.com/user-attachments/assets/5a5e90a0-e3bf-4fd7-86f8-da19b259ad4a" />
+
+## b) Caddy demonin automatisaatio ansiblella
+Seuraavaksi caddyn asentaminen piti automatisoida ansiblen avulla. Aluksi menin ansible hakemistooni komennolla `cd ansible`. Sitten loin caddylle oman hakemiston ansiblen sisälle, johon voisin asettaa automaattisen latauksen. Tein hakemiston komennolla `mkdir -p roles/caddy/tasks`. Tässä -p luo myös puuttuvat ylähakemistot, jos niitä on ja tasks olisi se paikka, johon luon itse koodin.
+
+<img width="266" height="238" alt="image" src="https://github.com/user-attachments/assets/dcc7e959-4ae8-4516-b7c7-3a75603a3691" />
+
+Etsin `ansible-doc apt` sisällöstä esimerkkejä ja käytin myös apuna H3 tehtävääni.
+
+<img width="291" height="56" alt="image" src="https://github.com/user-attachments/assets/9b8a5ef3-103b-44b1-8969-730d42f6a9c7" />
+
+Seuraavaksi loin caddylle main.yml tiedoston, johon itse koodi tulisi. Tein tämän komennolla `micro roles/caddy/tasks/main.yml`.
+
+
+
+
 
 
 
