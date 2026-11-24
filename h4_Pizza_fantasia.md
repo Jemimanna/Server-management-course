@@ -1,5 +1,5 @@
 # H4 Pizza Fantasia
-## Tiivistelmät
+## x) Tiivistelmät
 ### Karvinen 2023: Configuration Management of Distributed Systems over Unreliable and Hostile Networks: 4.12.1 Size and Complexity of Some DSLs
 * Salt DSL-kieli on todella laaja ja sisältää paljon dokumentaatiota.
 * Jinja2 malleja käytetään YAML-koodin tuottamiseen.
@@ -25,6 +25,8 @@
 * Tämä vähentää työmäärää idempotenttisuuden toteuttamisessa.
 
 ## a) Caddy demonin asennus
+Tämän tehtävän suoritukseen käytin aiemmin tekemääni tehtävää h3_Demoni ja ansible-doc sivuja.
+
 Aluksi päivitin pakettiluettelon komennolla `sudo apt-get update`, jonka jälkeen latasin Caddyn komennolla `sudo apt-get install caddy`.
 
 <img width="476" height="399" alt="image" src="https://github.com/user-attachments/assets/4aee6b55-3544-4fe8-8866-a495ecffa413" />
@@ -37,7 +39,7 @@ Tämän jälkeen ajoin vielä `sudo systemctl disable apache2` ja `sudo systemct
 
 <img width="470" height="109" alt="image" src="https://github.com/user-attachments/assets/f0ea850b-68af-449d-bf84-fb19fa9ffdff" />
 
-Tarkistin olivatko ne päällä komennoilla `sudo systemctl status apache2` ja `sudo systemctl status nginx`. Tulokseksi sain inactive ja failed eli ne olivat poissa päältä. En ollut varma, mitä nginxin vastaus failed tarkoitti. Ne pitivät laittaa pois päältä, jotta Caddy pystyisi käyttämään porttia 80.
+Tarkistin olivatko ne päällä komennoilla `sudo systemctl status apache2` ja `sudo systemctl status nginx`. Tulokseksi sain inactive ja failed eli ne olivat poissa päältä. En ollut varma, mitä nginxin vastaus failed tarkoitti. Ne pitivät laittaa pois päältä, jotta Caddy olisi se, jota käytetään.
 
 <img width="469" height="204" alt="image" src="https://github.com/user-attachments/assets/f25319bf-9907-412c-966e-238032ba75f5" />
 
@@ -52,6 +54,8 @@ Seuraavaksi menin tarkistamaan, että caddy oikeasti toimi menemällä selaimeen
 <img width="480" height="423" alt="image" src="https://github.com/user-attachments/assets/5a5e90a0-e3bf-4fd7-86f8-da19b259ad4a" />
 
 ## b) Caddy demonin automatisaatio ansiblella
+Tämän tehtävän suoritukseen käytin aiemmin tekemääni tehtävää h3_Demoni ja ansible-doc sivuja.
+
 Seuraavaksi caddyn asentaminen piti automatisoida ansiblen avulla. Aluksi menin ansible hakemistooni komennolla `cd ansible`. Sitten loin caddylle oman hakemiston ansiblen sisälle, johon voisin asettaa automaattisen latauksen. Tein hakemiston komennolla `mkdir -p roles/caddy/tasks`. Tässä -p luo myös puuttuvat ylähakemistot, jos niitä on ja tasks olisi se paikka, johon luon itse koodin.
 
 <img width="266" height="238" alt="image" src="https://github.com/user-attachments/assets/dcc7e959-4ae8-4516-b7c7-3a75603a3691" />
@@ -75,6 +79,7 @@ Asetin main.yml seuraavat tiedot:
      state: started
      enabled: yes
 ```
+Koodissa enabled:yes käynnistää caddyn automaattisesti kun kone käynnistyy.
 
 <img width="150" height="121" alt="image" src="https://github.com/user-attachments/assets/355d5cc4-bf34-4df1-a0a2-34f6ce54fe78" />
 
@@ -94,7 +99,6 @@ Tämän jälkeen ajoin playbookin komennolla `ansible-playbook site.yml -K`. En 
 
 <img width="305" height="35" alt="image" src="https://github.com/user-attachments/assets/c13e9224-9e7a-448a-945b-7887a82604a1" />
 
-
 <img width="476" height="206" alt="image" src="https://github.com/user-attachments/assets/53770b7d-d4c5-4f83-8868-0d5a21394ab0" />
 
 Nyt kun ajoin `systemctl is-active caddy` sain vastaukseksi active eli automaattinen käynnistys ansiblella onnistui.
@@ -106,12 +110,16 @@ Ajoin vielä kerran `ansible-playbook site.yml -K` tarkistaakseni, että nyt muu
 <img width="476" height="205" alt="image" src="https://github.com/user-attachments/assets/874005db-4095-4c30-836e-80d45cfa6abe" />
 
 ## c) Asetustiedostojen muutos
-Loin aluksi caddylle file hakemiston komennolla `mkdir -p roles/caddy/files` ja sinne `micro roles/caddy/files/asetus`, johon kirjoittaisin uudet tiedot. Kirjoitin sinne:
+Tämän tehtävän tekemiseen käytin apuna h3_Demoni tehtävääni, ansible-doc sivuja ja ChatGPT -tekoälyä, joka käytti lähteenään Caddy Documentation: The Caddyfile, respond, Caddyfile Quick-start ja Keep Caddy Running.
+
+File hakemiston luomiseen ja sen sisällöissä käytin apuna ChatGPT:n antamia lähteitä. Loin aluksi caddylle file hakemiston komennolla `mkdir -p roles/caddy/files` ja sinne `micro roles/caddy/files/asetus`, johon kirjoittaisin uudet tiedot. Kirjoitin sinne:
 ```yaml
 :80 {
     respond "Uusi asetus toimii"
 }
 ```
+Respond attribuutti palauttaa laitetun tekstin webbipalvelimelle. 80: on taas portti, jota caddy käyttää.
+
 <img width="194" height="35" alt="image" src="https://github.com/user-attachments/assets/05870311-a1e4-4a08-a73f-fd17c85c48c3" />
 
 Tämän jälkeen uusi asetus piti lisätä suoritettavaksi main.yml sisälle. Menin siis sinne komennolla `micro roles/caddy/tasks/main.yml`. Lisäsin sinne:
@@ -184,3 +192,16 @@ Sitten ajoin playbookin ja sain vastaukseksi ok=15 ja muut nollaa. Ajoin sen vie
 ## f) Pari hankittu: Sofia Rinne
 
 ## Lähteet
+* Ansible-doc sivut. Luettu: 24.11.2026.
+* Caddy Documentation. Caddyfile Quick-Start. Luettavissa: https://caddyserver.com/docs/quick-starts/caddyfile. Luettu: 24.11.2026.
+* Caddy Documentation. Keep Caddy Running. Luettavissa: https://caddyserver.com/docs/running. Luettu: 24.11.2026.
+* Caddy Documentation. Respond. Luettavissa: https://caddyserver.com/docs/caddyfile/directives/respond. Luettu: 24.11.2026.
+* Caddy Documentation. The Caddyfile. Luettavissa: https://caddyserver.com/docs/caddyfile. Luettu: 24.11.2026.
+* Karvinen, T. 2023. Configuration Management of Distributed Systems over Unreliable and Hostile Networks. Westminster research. Luettavissa: https://westminsterresearch.westminster.ac.uk/item/w7vvz/configuration-management-of-distributed-systems-over-unreliable-and-hostile-networks. Luettu: 24.11.2026.
+* Rontti, J. 2026. H3 Demoni. Github. Luettavissa: https://github.com/Jemimanna/Server-management-course/blob/main/h3_Demoni.md. Luettu: 24.11.2026.
+
+
+
+
+
+
