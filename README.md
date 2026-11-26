@@ -1,3 +1,2 @@
 # Server-management-course
-Homework reports
-Works with SSH!
+Homework reports and works with SSH!!
