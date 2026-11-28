@@ -96,11 +96,8 @@ Alussa näkyi viimeisin tekemäni commit ja siihen laittamani selittävä viesti
 
 <img width="443" height="140" alt="image" src="https://github.com/user-attachments/assets/8721a36d-f675-4ee7-a062-f350cb3808ba" />
 
-Olin lisännyt koulussa nimeni sekä sähköpostini gitin latauksen yhteydessä komennoilla `git config --global user.email "jemmaro100@gmail.com" sekä `git config --global user.name "Jemima Rontti"`. Nimeni ja sähköpostini näkyivät halutulla tavalla.
+Olin lisännyt koulussa nimeni sekä sähköpostini gitin latauksen yhteydessä komennoilla `git config --global user.email "esimerkki@gmail.com"` sekä `git config --global user.name "Jemima Rontti"`. Nimeni ja sähköpostini näkyivät halutulla tavalla.
 
-<img width="221" height="24" alt="image" src="https://github.com/user-attachments/assets/84b1eadd-487d-4643-96f7-1b413d8ca38f" />
-
-<img width="347" height="52" alt="image" src="https://github.com/user-attachments/assets/0a5eeb5d-3672-45fd-82d9-d52c91ffcd68" />
 
 
 
