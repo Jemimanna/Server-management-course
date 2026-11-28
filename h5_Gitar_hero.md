@@ -42,6 +42,7 @@ Sitten Githubista menin uuteen sunshine-repositoryyni. Sieltä kohdasta code pai
 
 Sitten suoritin komennon `git clone git@github.com:Jemimanna/sunshine-repository.git`, joka kloonaisi tiedot.
 
+<img width="388" height="83" alt="image" src="https://github.com/user-attachments/assets/2d310299-eace-465b-a20d-36ae0794143f" />
 
 
 
