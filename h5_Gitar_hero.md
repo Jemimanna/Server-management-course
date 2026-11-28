@@ -15,6 +15,17 @@
 * Fosterin (n.d.) artikkelin Git add, commit, and push mukaan `git push` komento lähettää paikalliset commitit etä repositoryyn esim. GitHubiin.
 
 ## a) Online
+Menin Githubiin ja tein sinne uuden repositoryn.
+
+<img width="1193" height="150" alt="image" src="https://github.com/user-attachments/assets/a008fd43-d56c-4ad8-92bc-af133944ac55" />
+
+Asetin nimeksi sunshine-repository ja kuvaavan tekstin. Jätin näkyvyyden Public. Sitten laitoin Add README päälle ja lisenssiin GNU General Public License 3.
+
+<img width="766" height="763" alt="image" src="https://github.com/user-attachments/assets/c0eed7da-ccb7-4050-a70a-2a46be26abcf" />
+
+<img width="914" height="477" alt="image" src="https://github.com/user-attachments/assets/bd47c93b-8083-4844-a289-6cd6a3175d8b" />
+
+## b) Dolly
 
 
 
