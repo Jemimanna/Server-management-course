@@ -1,0 +1,30 @@
+# H5 Gitar hero
+## Tiivistelmät
+### Chacon and Straub 2014: Pro Git, 2ed: 1.3 Getting Started - What is Git?
+* Git tallentaa sen hetkisen tilan `commit` komennolla. Se toimii niin että se ottaa snapshotin siitä, miltä tiedostot näyttävät sillä hetkellä ja tallentaa sen.
+* Jos tiedostoa ei muokattu, Git ei tallenna sitä uudelleen, vaan käyttää aiemmin tallennettua samaa tiedostoa.
+* Git on vähän niin kuin mini tiedostojärjestelmä.
+* Gittiä voi käyttää ilman internetiä tai VPN:ää.
+* Tallennetut tiedot tarkistetaan tarkistussumman avulla -> Git huomaa mahdolliset muutokset.
+* Gitillä on kolme päätilaa: Modified eli tiedostoa on muokattu, Staged eli tiedosto on lisätty menemään seuraavaan committiin ja Committed eli että muutokset on tallennettu.
+* Working tree kohdassa tiedostoja muokataan, staging area kohdassa lisätään ne muutokset, mitä halutaan seuraavaan committiin ja Git directoryyn tallennetaan eri versiot.
+### git add --all && git commit; git pull && git push
+* Foster (n.d.) kertoo artikkelissaan Git add, commit, and push ja artikkelissa How to add all tracked files in Git, että `git add -all` kohdassa `git add` ottaa muokatut tiedostot ja lisää ne staging areaan ja `--all` lisää kaikki tehdyt muutokset staging areaan, myös uudet, muokatut ja poistetut tiedostot.
+* Fosterin (n.d.) artikkelin Git add, commit, and push mukaan `git commit` komento muuntaa staging areassa olevan sisällön snapshotiksi, joka tallentuu Git-arkiston historiaan.
+* Fosterin (n.d.) artikkelissa How to use git pull kerrotaan, että `git pull` komento päivittää nykyisen paikallisen haaran etähaaraassa olevilla uusimmilla muutoksilla.
+* Fosterin (n.d.) artikkelin Git add, commit, and push mukaan `git push` komento lähettää paikalliset commitit etä repositoryyn esim. GitHubiin.
+
+## a) Online
+
+
+
+
+
+
+
+
+## Lähteet
+* Foster, G. n.d. Git add, commit, and push. Graphite. Luettavissa: https://graphite.com/guides/git-add-commit-push. Luettu: 28.11.2026.
+* Foster, G. n.d. How to add all tracked files in Git. Graphite. Luettavissa: https://graphite.com/guides/add-all-tracked-files. Luettu: 28.11.2026.
+* Foster, G. n.d. How to use git pull. Graphite. Luettavissa: https://graphite.com/guides/how-to-use-git-pull. Luettu: 28.11.2026.
+* Chacon, S. & Straub, B. 2014. Getting Started - What is Git?. Pro Git. Luettavissa: https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F. Luettu: 28.11.2026.
