@@ -46,6 +46,7 @@ Sitten suoritin komennon `git clone git@github.com:Jemimanna/sunshine-repository
 
 Seuraavaksi komennolla `ls` näin, että sunshine-repository oli ilmestynyt ja menin sinne komennolla `cd sunshine-repository`.
 
+<img width="488" height="56" alt="image" src="https://github.com/user-attachments/assets/f77c9e81-1540-468f-bb72-467b908070cf" />
 
 
 ## Lähteet
