@@ -69,9 +69,25 @@ Tekstin lisäys tuli esiin eli push onnistui!
 ## c) Doh!
 Menin jälleen muokkaamaan README.md tiedostoa komennolla `micro README.md` ja lisäsin sinne jotain outoa tekstiä.
 
+<img width="503" height="242" alt="image" src="https://github.com/user-attachments/assets/8789b75a-b704-463b-9089-f168d0c547a0" />
 
+Käytin `git status` komentoa katsoakseni, että muutos on otettu huomioon.
 
+<img width="359" height="109" alt="image" src="https://github.com/user-attachments/assets/77b3a08c-278d-44a1-9c2c-1d6606bcd844" />
 
+Sitten poistin muutoksen komennolla `git reset --hard`.
+
+<img width="278" height="32" alt="image" src="https://github.com/user-attachments/assets/b598410a-306d-48ba-b582-f8d7c68c30be" />
+
+Nyt kun ajoin uudelleen `git status` se sanoi, että kaikki on up to date.
+
+<img width="245" height="59" alt="image" src="https://github.com/user-attachments/assets/7339a1b8-af8e-47fc-b8ce-384946de4cf7" />
+
+Katsoin vielä komennolla `cat README.md`, että muutokset oli poistettu.
+
+<img width="299" height="47" alt="image" src="https://github.com/user-attachments/assets/1591d6f5-e8ee-4c2e-8a91-9ce2058bc3c7" />
+
+## d) Tukki
 
 
 
