@@ -36,7 +36,11 @@ Githubista menin omasta profiilikuvasta settings ja sieltä kohtaan SSH and GPG 
 
 <img width="939" height="265" alt="image" src="https://github.com/user-attachments/assets/c5dbde4f-f02e-4e23-8387-f1f5438ec3ea" />
 
-Sitten Githubista menin uuteen repositoryyni. 
+Sitten Githubista menin uuteen sunshine-repositoryyni. Sieltä kohdasta code painoin SSH ja kopioin esitetyn linkin.
+
+<img width="932" height="487" alt="image" src="https://github.com/user-attachments/assets/553526e7-baf6-493e-9c76-6b92495c5f59" />
+
+Sitten suoritin komennon `git clone git@github.com:Jemimanna/sunshine-repository.git`, joka kloonaisi tiedot.
 
 
 
