@@ -96,10 +96,40 @@ Alussa näkyi viimeisin tekemäni commit ja siihen laittamani selittävä viesti
 
 <img width="443" height="140" alt="image" src="https://github.com/user-attachments/assets/8721a36d-f675-4ee7-a062-f350cb3808ba" />
 
-Olin lisännyt koulussa nimeni sekä sähköpostini gitin latauksen yhteydessä komennoilla `git config --global user.email "esimerkki@gmail.com"` sekä `git config --global user.name "Jemima Rontti"`. Nimeni ja sähköpostini näkyivät halutulla tavalla.
+Olin lisännyt koulussa nimeni sekä sähköpostini gitin latauksen yhteydessä komennoilla `git config --global user.email "jemmaro100@gmail.com"` sekä `git config --global user.name "Jemima Rontti"`. Nimeni ja sähköpostini näkyivät halutulla tavalla.
 
+<img width="347" height="52" alt="image" src="https://github.com/user-attachments/assets/701a13a9-42c4-4f5b-a913-9c277954097f" />
 
+## e) Gitanbile
+Menin aluksi ansible kansiooni `cd ansible` ja siellä ajoin komennot `git init`, joka alusti ansible kansion versionhallintaan. Sitten lisäsin kaikki tiedostot sinne `git add .` komennolla.
 
+<img width="409" height="136" alt="image" src="https://github.com/user-attachments/assets/615c17fc-2667-472b-9b8a-6f62cf0c4528" />
+
+Tämän jälkeen ajoin `git commit`, joka tallensi tiedot.
+
+<img width="350" height="208" alt="image" src="https://github.com/user-attachments/assets/7c537b11-e783-44c0-ad52-715aeb44e77a" />
+
+<img width="273" height="134" alt="image" src="https://github.com/user-attachments/assets/a6667859-bce6-4371-98fa-3c83c23e7a79" />
+
+Menin muokkaamaan content kohtaa `cd roles/hello/tasks/main.yml` tiedosto polusta. 
+
+<img width="157" height="57" alt="image" src="https://github.com/user-attachments/assets/ca80c926-e93c-49d3-b801-c700dbfad062" />
+
+<img width="192" height="44" alt="image" src="https://github.com/user-attachments/assets/5eee0905-fbb6-4c04-8a63-a1287ab2dcaa" />
+
+Sitten ajoin `ansible-playbook site.yml -K`, jotta muutokset tulisivat voimaan ja siellä näkyi muutos.
+
+<img width="366" height="121" alt="image" src="https://github.com/user-attachments/assets/4a0f2bbc-3d55-452d-85cb-6f13399c84de" />
+
+<img width="452" height="35" alt="image" src="https://github.com/user-attachments/assets/932a6279-f26a-4731-a71e-6dcb6048c168" />
+
+Sitten vein muutokset gitillä komennolla `git add` ja tallensin komennolla `git commit`, jonne jälleen laitoin kuvaavan lyhyen tekstin.
+
+<img width="362" height="89" alt="image" src="https://github.com/user-attachments/assets/93a5ad46-eea4-4a24-9e64-212564dc1ea4" />
+
+Ajoin vielä `git log --patch`, jotta näkisin tekemäni muutoksen ja siellä se oli. Punaisella näkyy vanha teksti ja vihreällä uusi.
+
+<img width="347" height="115" alt="image" src="https://github.com/user-attachments/assets/59e94e15-9a2a-4879-8fc7-a8c27d425ac3" />
 
 
 ## Lähteet
