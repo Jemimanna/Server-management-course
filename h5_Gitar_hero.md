@@ -50,6 +50,15 @@ Seuraavaksi komennolla `ls` näin, että sunshine-repository oli ilmestynyt ja m
 
 Menin muokkaamaan Githubiin luomaani README.md tiedostoa komennolla `micro README.md`. Lisäsin sinne tekstiä lisää ja tallensin.
 
+<img width="500" height="256" alt="image" src="https://github.com/user-attachments/assets/611d4989-28eb-4416-8cc3-9de0d2abd108" />
+
+
+
+
+
+
+
+
 
 ## Lähteet
 * Foster, G. n.d. Git add, commit, and push. Graphite. Luettavissa: https://graphite.com/guides/git-add-commit-push. Luettu: 28.11.2026.
