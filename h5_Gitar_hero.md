@@ -32,6 +32,12 @@ Aluksi menin hakemaan olemassa olevani SSH public key. Tein tämän komennolla e
 
 <img width="482" height="62" alt="image" src="https://github.com/user-attachments/assets/6aa0aa20-02bd-4abb-ad4b-00f4edfa99ec" />
 
+Githubista menin omasta profiilikuvasta settings ja sieltä kohtaan SSH and GPG keys. Painoin New SSH key ja lisäsin juuri kopioimani julkisen avaimen tiedot siihen.
+
+<img width="939" height="265" alt="image" src="https://github.com/user-attachments/assets/c5dbde4f-f02e-4e23-8387-f1f5438ec3ea" />
+
+Sitten Githubista menin uuteen repositoryyni. 
+
 
 
 
