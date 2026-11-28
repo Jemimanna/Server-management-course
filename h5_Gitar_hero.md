@@ -52,7 +52,7 @@ Menin muokkaamaan Githubiin luomaani README.md tiedostoa komennolla `micro READM
 
 <img width="500" height="256" alt="image" src="https://github.com/user-attachments/assets/611d4989-28eb-4416-8cc3-9de0d2abd108" />
 
-
+Sitten ajoin komennon `git add .` ja `git commit`. Commit messageen laitoin Updating README.md ja tallensin.
 
 
 
