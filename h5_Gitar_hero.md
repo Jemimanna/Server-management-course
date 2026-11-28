@@ -54,11 +54,17 @@ Menin muokkaamaan Githubiin luomaani README.md tiedostoa komennolla `micro READM
 
 Sitten ajoin komennon `git add .` ja `git commit`. Commit messageen laitoin Updating README.md ja tallensin.
 
+<img width="502" height="233" alt="image" src="https://github.com/user-attachments/assets/0119e3f2-3e9b-4272-a683-2a482a5766cd" />
 
+Seuraavaksi ajoin komennon `git push`, jonka tarkoitus oli siirtää juuri tekemäni muutokset Githubiin.
 
+<img width="306" height="136" alt="image" src="https://github.com/user-attachments/assets/e1d47710-b483-465d-a146-e17c8ddbcb89" />
 
+Tämän jälkeen menin repositoryyni Githubissa ja katsoin tulivatko muutokset.
 
+<img width="475" height="245" alt="image" src="https://github.com/user-attachments/assets/541a9a6c-66fc-446d-9656-1daed2c23204" />
 
+Tekstin lisäys tuli esiin eli push onnistui!
 
 ## Lähteet
 * Foster, G. n.d. Git add, commit, and push. Graphite. Luettavissa: https://graphite.com/guides/git-add-commit-push. Luettu: 28.11.2026.
