@@ -66,6 +66,15 @@ Tämän jälkeen menin repositoryyni Githubissa ja katsoin tulivatko muutokset.
 
 Tekstin lisäys tuli esiin eli push onnistui!
 
+## c) Doh!
+Menin jälleen muokkaamaan README.md tiedostoa komennolla `micro README.md` ja lisäsin sinne jotain outoa tekstiä.
+
+
+
+
+
+
+
 ## Lähteet
 * Foster, G. n.d. Git add, commit, and push. Graphite. Luettavissa: https://graphite.com/guides/git-add-commit-push. Luettu: 28.11.2026.
 * Foster, G. n.d. How to add all tracked files in Git. Graphite. Luettavissa: https://graphite.com/guides/add-all-tracked-files. Luettu: 28.11.2026.
