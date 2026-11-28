@@ -30,6 +30,7 @@ Tämän tehtävän suoritukseen käytin tunnilla (26.11.2026) oppimiani asioita 
 
 Aluksi menin hakemaan olemassa olevani SSH public key. Tein tämän komennolla ensin menemällä ssh kansioon `cd .ssh` ja siellä `ls`, jotta näin avaimeni.
 
+<img width="482" height="62" alt="image" src="https://github.com/user-attachments/assets/6aa0aa20-02bd-4abb-ad4b-00f4edfa99ec" />
 
 
 
