@@ -26,7 +26,9 @@ Asetin nimeksi sunshine-repository ja kuvaavan tekstin. Jätin näkyvyyden Publi
 <img width="914" height="477" alt="image" src="https://github.com/user-attachments/assets/bd47c93b-8083-4844-a289-6cd6a3175d8b" />
 
 ## b) Dolly
+Tämän tehtävän suoritukseen käytin tunnilla (26.11.2026) oppimiani asioita ja h5 Gitar Hero vinkkejä kohtaa.
 
+Aluksi menin hakemaan olemassa olevani SSH public key. Tein tämän komennolla ensin menemällä ssh kansioon `cd .ssh` ja siellä `ls`, jotta näin avaimeni.
 
 
 
