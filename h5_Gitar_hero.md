@@ -88,6 +88,20 @@ Katsoin vielä komennolla `cat README.md`, että muutokset oli poistettu.
 <img width="299" height="47" alt="image" src="https://github.com/user-attachments/assets/1591d6f5-e8ee-4c2e-8a91-9ce2058bc3c7" />
 
 ## d) Tukki
+Ajoin komennon `git log --patch`, joka näytti kaikki commitit, mitä olin tehnyt. Siellä näkyi myös Githubissa oleva GNU General Public Licence Version 3 kokonaan. Se oli committina ja siinä ei näkynyt, että sitä olisi muokattu mitenkään.
+
+<img width="409" height="248" alt="image" src="https://github.com/user-attachments/assets/7346c56c-be15-4eb9-b63d-d940fc76cd59" />
+
+Alussa näkyi viimeisin tekemäni commit ja siihen laittamani selittävä viesti. Siinä myös näkyy päivämäärä, jolloin loin sen. Punaisella tekstillä (-) näkyy, miltä teksti näytti aiemmin ja vihreällä (+) sen alapuolella näkyy, miten tekstiä muutettiin.
+
+<img width="443" height="140" alt="image" src="https://github.com/user-attachments/assets/8721a36d-f675-4ee7-a062-f350cb3808ba" />
+
+Olin lisännyt koulussa nimeni sekä sähköpostini gitin latauksen yhteydessä komennoilla `git config --global user.email "jemmaro100@gmail.com" sekä `git config --global user.name "Jemima Rontti"`. Nimeni ja sähköpostini näkyivät halutulla tavalla.
+
+<img width="221" height="24" alt="image" src="https://github.com/user-attachments/assets/84b1eadd-487d-4643-96f7-1b413d8ca38f" />
+
+<img width="347" height="52" alt="image" src="https://github.com/user-attachments/assets/0a5eeb5d-3672-45fd-82d9-d52c91ffcd68" />
+
 
 
 
